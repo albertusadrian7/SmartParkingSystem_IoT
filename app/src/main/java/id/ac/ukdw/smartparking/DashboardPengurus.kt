@@ -28,12 +28,15 @@ class DashboardPengurus : AppCompatActivity() {
         val databaseListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Get data dari firebase dan update value ke tampilan UI
-                /*
-                val parkiran = dataSnapshot.child("parkiran").getValue<Double>().toString()
-                val pemasukan = dataSnapshot.child("pemasukan").getValue<Double>().toString()
-                 */
+
+                val parkiranA = dataSnapshot.child("parkiran/A").getValue<Boolean>().toString()
+                val parkiranB = dataSnapshot.child("parkiran/B").getValue<Boolean>().toString()
+                val parkiranC = dataSnapshot.child("parkiran/C").getValue<Boolean>().toString()
+                val parkiranD = dataSnapshot.child("parkiran/D").getValue<Boolean>().toString()
+                val pemasukan = dataSnapshot.child("pemasukan/desember/1").getValue<Double>().toString()
+
                 val pengunjung = dataSnapshot.child("pengunjung").getValue<Double>().toString()
-                binding.tvFirebase.text = "Pengunjung: $pengunjung"
+                binding.tvFirebase.text = "Pengunjung: $pengunjung\nParkiran A: $parkiranA\nPemasukan Desember Tanggal 1: Rp $pemasukan"
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
