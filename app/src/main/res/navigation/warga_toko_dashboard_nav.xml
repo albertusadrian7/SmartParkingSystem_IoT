@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dashboard_nav"
+    app:startDestination="@id/wargaTokoDashboardFragment">
+
+    <fragment
+        android:id="@+id/wargaTokoDashboardFragment"
+        android:name="com.maluku.sma_rt.view.warga.e_commerce.WargaTokoDashboardFragment"
+        android:label="WargaTokoDashboardFragment"
+        tools:layout="@layout/fragment_warga_toko_dashboard">
+        <action
+            android:id="@+id/action_wargaTokoDashboardFragment_to_wargaTokoKelolaProdukFragment"
+            app:destination="@id/wargaTokoKelolaProdukFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wargaTokoKelolaProdukFragment"
+        android:name="com.maluku.sma_rt.view.warga.e_commerce.WargaTokoKelolaProdukFragment"
+        android:label="WargaTokoKelolaProdukFragment"
+        tools:layout="@layout/fragment_warga_toko_kelola_produk">
+        <action
+            android:id="@+id/action_wargaTokoKelolaProdukFragment_to_wargaTokoDashboardFragment"
+            app:destination="@id/wargaTokoDashboardFragment" />
+        <action
+            android:id="@+id/action_wargaTokoKelolaProdukFragment_to_wargaTokoEditProdukFragment"
+            app:destination="@id/wargaTokoEditProdukFragment" />
+        <action
+            android:id="@+id/action_wargaTokoKelolaProdukFragment_to_wargaTokoTambahProdukFragment"
+            app:destination="@id/wargaTokoTambahProdukFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wargaTokoEditProdukFragment"
+        android:name="com.maluku.sma_rt.view.warga.e_commerce.WargaTokoEditProdukFragment"
+        android:label="WargaTokoEditProdukFragment"
+        tools:layout="@layout/fragment_warga_toko_edit_produk">
+        <action
+            android:id="@+id/action_wargaTokoEditProdukFragment_to_wargaTokoKelolaProdukFragment"
+            app:destination="@id/wargaTokoKelolaProdukFragment" />
+        <argument
+            android:name="product_id"
+            app:argType="string" />
+        <argument
+            android:name="product_name"
+            app:argType="string" />
+        <argument
+            android:name="product_detail"
+            app:argType="string" />
+        <argument
+            android:name="product_image"
+            app:argType="string" />
+        <argument
+            android:name="product_price"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/wargaTokoTambahProdukFragment"
+        android:name="com.maluku.sma_rt.view.warga.e_commerce.WargaTokoTambahProdukFragment"
+        android:label="WargaTokoTambahProdukFragment"
+        tools:layout="@layout/fragment_warga_toko_tambah_produk">
+        <action
+            android:id="@+id/action_wargaTokoTambahProdukFragment_to_wargaTokoKelolaProdukFragment"
+            app:destination="@id/wargaTokoKelolaProdukFragment" />
+    </fragment>
+
+</navigation>

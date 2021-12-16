@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/dashboardFragment"
+        android:icon="@drawable/ic_toolbar_icon_home"
+        android:title="@string/home"/>
+    <item
+        android:id="@+id/newsFragment"
+        android:icon="@drawable/ic_toolbar_icon_market"
+        android:title="Produk"/>
+    <item
+        android:id="@+id/marketFragment"
+        android:icon="@drawable/ic_toolbar_icon_news"
+        android:title="Pesanan"/>
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_toolbar_icon_user"
+        android:title="Profile"/>
+
+
+</menu>

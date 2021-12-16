@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_nav"
+    app:startDestination="@id/splashScreenFragment">
+
+    <fragment
+        android:id="@+id/wargaLoginFragment"
+        android:name="id.ac.ukdw.smartparking.view.warga.auth.WargaLoginFragment"
+        android:label="WargaLoginFragment"
+        tools:layout="@layout/fragment_warga_login">
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/wargaRegisterFragment"
+            app:enterAnim="@anim/from_bottom"
+            app:exitAnim="@anim/to_top" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="id.ac.ukdw.smartparking.view.auth.SplashScreenFragment"
+        android:label="SplashScreenFragment"
+        tools:layout="@layout/fragment_splash_screen">
+        <action
+            android:id="@+id/action_splashScreenFragment_to_wargaLoginFragment"
+            app:destination="@id/wargaLoginFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/wargaRegisterFragment"
+        android:name="id.ac.ukdw.smartparking.view.warga.auth.WargaRegisterFragment"
+        android:label="WargaRegisterFragment"
+        tools:layout="@layout/fragment_warga_register">
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/wargaLoginFragment"
+            app:enterAnim="@anim/from_top"
+            app:exitAnim="@anim/to_bottom" />
+    </fragment>
+
+</navigation>

@@ -1,5 +1,4 @@
 package id.ac.ukdw.smartparking
-
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,14 +11,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        navigateToDashboardPengurus()
+//        navigateToDashboardPengurus()
     }
 
-    private fun navigateToDashboardPengurus(){
-        binding.btnLogin.setOnClickListener {
-            val intent = Intent(this, DashboardPengurus::class.java)
-            startActivity(intent)
-        }
-    }
+//    private fun navigateToDashboardPengurus(){
+//        binding.btnLogin.setOnClickListener {
+//            val intent = Intent(this, DashboardPengurus::class.java)
+//            startActivity(intent)
+//        }
+//    }
 
 }

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dashboard_nav"
+    app:startDestination="@id/dashboardFragment">
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.maluku.sma_rt.view.warga.WargaDashboardFragment"
+        android:label="DashboardFragment"
+        tools:layout="@layout/fragment_warga_dashboard">
+        <action
+            android:id="@+id/action_dashboardFragment_to_wargaNewsDetailKegiatanFragment"
+            app:destination="@id/wargaNewsDetailKegiatanFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_wargaNewsDetailInfoFragment"
+            app:destination="@id/wargaNewsDetailInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.maluku.sma_rt.view.warga.WargaNewsFragment"
+        android:label="NewsFragment"
+        tools:layout="@layout/fragment_warga_news"/>
+    <fragment
+        android:id="@+id/marketFragment"
+        android:name="com.maluku.sma_rt.view.warga.e_commerce.WargaMarketFragment"
+        android:label="MarketFragment"
+        tools:layout="@layout/fragment_warga_market">
+        <action
+            android:id="@+id/action_marketFragment_to_wargaMarketDetailProdukFragment"
+            app:destination="@id/wargaMarketDetailProdukFragment" />
+        <action
+            android:id="@+id/action_marketFragment_to_wargaMarketDetailTokoFragment"
+            app:destination="@id/wargaMarketDetailTokoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.maluku.sma_rt.view.warga.profile.WargaProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_warga_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_wargaProfileEditProfilFragment"
+            app:destination="@id/wargaProfileEditProfilFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wargaMarketDetailProdukFragment"
+        android:name="com.maluku.sma_rt.view.warga.e_commerce.WargaMarketDetailProdukFragment"
+        android:label="WargaMarketDetailProdukFragment"
+        tools:layout="@layout/fragment_warga_market_detail_produk">
+        <action
+            android:id="@+id/action_wargaMarketDetailProdukFragment_to_marketFragment"
+            app:destination="@id/marketFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wargaMarketDetailTokoFragment"
+        android:name="com.maluku.sma_rt.view.warga.e_commerce.WargaMarketDetailTokoFragment"
+        android:label="WargaMarketDetailTokoFragment"
+        tools:layout="@layout/fragment_warga_market_detail_toko">
+        <action
+            android:id="@+id/action_wargaMarketDetailTokoFragment_to_marketFragment"
+            app:destination="@id/marketFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wargaNewsDetailKegiatanFragment"
+        android:name="com.maluku.sma_rt.view.warga.news.WargaNewsDetailKegiatanFragment"
+        android:label="WargaNewsDetailKegiatanFragment"
+        tools:layout="@layout/fragment_warga_news_detail_kegiatan">
+        <action
+            android:id="@+id/action_wargaNewsDetailKegiatanFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wargaNewsDetailInfoFragment"
+        android:name="com.maluku.sma_rt.view.warga.news.WargaNewsDetailInfoFragment"
+        android:label="WargaNewsDetailInfoFragment"
+        tools:layout="@layout/fragment_warga_news_detail_info">
+        <action
+            android:id="@+id/action_wargaNewsDetailInfoFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wargaProfileEditProfilFragment"
+        android:name="com.maluku.sma_rt.view.warga.profile.WargaProfileEditProfilFragment"
+        android:label="WargaProfileEditProfilFragment"
+        tools:layout="@layout/fragment_warga_profile_edit_profil">
+        <action
+            android:id="@+id/action_wargaProfileEditProfilFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+</navigation>
