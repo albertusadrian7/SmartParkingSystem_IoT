@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout"
-    tools:context="view.warga.WargaDashboardFragment">
+    tools:context="view.pengunjung.PengunjungDashboardFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/headerBackground"
@@ -328,74 +328,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvInfoTerkini"
-                android:orientation="horizontal">
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingLeft="@dimen/_16sdp"
-                    tools:itemCount="1"
-                    android:clipToPadding="false"
-                    android:orientation="horizontal"
-                    android:id="@+id/rvInfoTerkini"
-                    tools:listitem="@layout/item_card_info_terkini"/>
-            </LinearLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_16sdp">
-
-                <TextView
-                    android:id="@+id/tvKegiatanWarga"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="@string/kegiatan_warga"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_14ssp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tvLihatSelengkapnyaKegiatanWarga"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="@string/lihat_semua"
-                    android:textColor="@color/grey_3"
-                    android:textSize="@dimen/_10ssp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:layout_marginBottom="@dimen/_16sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvInfoTerkini"
-                android:orientation="horizontal">
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingLeft="@dimen/_16sdp"
-                    tools:itemCount="1"
-                    android:clipToPadding="false"
-                    android:orientation="horizontal"
-                    android:id="@+id/rvKegiatanWarga"
-                    tools:listitem="@layout/item_card_kegiatan_warga"/>
-            </LinearLayout>
 
         </LinearLayout>
 

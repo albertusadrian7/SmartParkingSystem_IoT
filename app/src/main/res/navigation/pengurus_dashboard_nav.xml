@@ -13,7 +13,7 @@
         android:id="@+id/newsFragment"
         android:name="com.maluku.sma_rt.view.pengurus.PengurusNewsFragment"
         android:label="NewsFragment"
-        tools:layout="@layout/fragment_pengurus_news"/>
+        tools:layout="@layout/fragment_pengunjung_news"/>
     <fragment
         android:id="@+id/marketFragment"
         android:name="com.maluku.sma_rt.view.pengurus.e_commerce.PengurusMarketFragment"
@@ -23,5 +23,5 @@
         android:id="@+id/profileFragment"
         android:name="com.maluku.sma_rt.view.pengurus.PengurusProfileFragment"
         android:label="ProfileFragment"
-        tools:layout="@layout/fragment_pengurus_profile"/>
+        tools:layout="@layout/fragment_pengunjung_profile"/>
 </navigation>

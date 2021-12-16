@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dashboard_nav"
+    app:startDestination="@id/dashboardFragment">
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="id.ac.ukdw.smartparking.view.pengunjung.PengunjungDashboardFragment"
+        android:label="PengunjungDashboardFragment"
+        tools:layout="@layout/fragment_pengunjung_dashboard"/>
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="id.ac.ukdw.smartparking.view.pengunjung.PengunjungNewsFragment"
+        android:label="PengunjungNewsFragment"
+        tools:layout="@layout/fragment_pengunjung_news"/>
+    <fragment
+        android:id="@+id/marketFragment"
+        android:name="id.ac.ukdw.smartparking.view.pengunjung.PengunjungMarketFragment"
+        android:label="PengunjungMarketFragment"
+        tools:layout="@layout/fragment_pengunjung_news"/>
+</navigation>

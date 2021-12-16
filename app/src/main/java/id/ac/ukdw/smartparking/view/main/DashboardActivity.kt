@@ -11,12 +11,12 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import id.ac.ukdw.smartparking.R
 
-class WargaDashboardActivity : AppCompatActivity() {
+class DashboardActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_warga_dashboard)
+        setContentView(R.layout.activity_pengunjung_dashboard)
 
         supportActionBar?.hide()
 
@@ -26,8 +26,7 @@ class WargaDashboardActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(setOf(
             R.id.dashboardFragment,
             R.id.newsFragment,
-            R.id.marketFragment,
-            R.id.profileFragment
+            R.id.marketFragment
         ))
         setupActionBarWithNavController(navController, appBarConfiguration)
 
@@ -47,7 +46,6 @@ class WargaDashboardActivity : AppCompatActivity() {
                 R.id.dashboardFragment -> showBottomNav()
                 R.id.newsFragment -> showBottomNav()
                 R.id.marketFragment -> showBottomNav()
-                R.id.profileFragment -> showBottomNav()
                 else -> hideBottomNav()
             }
         }

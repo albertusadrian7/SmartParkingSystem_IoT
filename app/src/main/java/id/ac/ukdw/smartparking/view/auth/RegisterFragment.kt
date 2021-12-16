@@ -1,6 +1,5 @@
-package id.ac.ukdw.smartparking.view.warga.auth
+package id.ac.ukdw.smartparking.view.auth
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,12 +13,12 @@ import android.widget.AdapterView
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import id.ac.ukdw.smartparking.R
-import id.ac.ukdw.smartparking.databinding.FragmentWargaRegisterBinding
+import id.ac.ukdw.smartparking.databinding.FragmentRegisterBinding
 import id.ac.ukdw.smartparking.extentions.UserValidator
 
 
 class WargaRegisterFragment : Fragment() {
-    private lateinit var binding: FragmentWargaRegisterBinding
+    private lateinit var binding: FragmentRegisterBinding
     private lateinit var autoCompleteTextView: AutoCompleteTextView
     private var kodeKeluarga: String = ""
     private var email: String = ""
@@ -47,7 +46,7 @@ class WargaRegisterFragment : Fragment() {
     }
 
     private fun bindingView(): View {
-        binding = FragmentWargaRegisterBinding.inflate(layoutInflater)
+        binding = FragmentRegisterBinding.inflate(layoutInflater)
         return binding.root
     }
 

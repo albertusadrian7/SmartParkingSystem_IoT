@@ -41,7 +41,7 @@ class SplashScreenFragment : Fragment() {
 
     private fun navigateToDashboard() {
             val direction = SplashScreenFragmentDirections
-                .actionSplashScreenFragmentToWargaLoginFragment()
+                .actionSplashScreenFragmentToLoginFragment()
         Handler().postDelayed({findNavController().navigate(direction)}, 4000)
 
     }
