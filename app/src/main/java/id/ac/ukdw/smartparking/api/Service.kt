@@ -22,7 +22,7 @@ interface Service {
     @FormUrlEncoded
     @POST("userApi.php?function=login_user")
     fun loginPengunjung(
-        @Field("email") email: String,
+        @Field("username") username: String,
         @Field("password") password: String
     ): Call<OnLoginSuccessResponse>
 

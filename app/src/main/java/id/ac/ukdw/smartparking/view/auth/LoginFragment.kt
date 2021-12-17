@@ -13,15 +13,16 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import id.ac.ukdw.smartparking.databinding.FragmentLoginBinding
 import id.ac.ukdw.smartparking.extentions.UserValidator
+import id.ac.ukdw.smartparking.presenter.LoginPresenter
+import id.ac.ukdw.smartparking.presenter.RegisterPresenter
 import id.ac.ukdw.smartparking.view.main.AuthActivity
 import id.ac.ukdw.smartparking.view.main.DashboardActivity
+import id.ac.ukdw.smartparking.view.viewInterface.LoginInterface
 
-class LoginFragment : Fragment() {
+class LoginFragment : Fragment(), LoginInterface {
     private lateinit var binding: FragmentLoginBinding
-    private lateinit var etUsername: EditText
-    private lateinit var etPassword: EditText
-    private lateinit var email: String
-    private lateinit var password: String
+    private var username: String = ""
+    private var password: String = ""
     private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreateView(
@@ -35,7 +36,13 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        login()
+        usernameFocusListener()
+        passwordFocusListener()
+        binding.btnMasuk.setOnClickListener {
+            binding.etUsername.clearFocus()
+            binding.etPassword.clearFocus()
+            submitForm()
+        }
     }
 
     private fun navigateToDashboard() {
@@ -58,10 +65,52 @@ class LoginFragment : Fragment() {
         requireActivity().finish()
     }
 
-    private fun login() {
-        binding.btnMasuk.setOnClickListener {
-            navigateToDashboard()
+    private fun submitForm(){
+        val validUsername = !binding.etUsername.text.isNullOrEmpty()
+        val validPassword = !binding.etPassword.text.isNullOrEmpty()
+        if (validUsername && validPassword){
+            loginPengunjung(username,password)
+        } else {
+            if (!validUsername){
+                binding.usernameContainer.helperText = "Masukan username!"
+            }
+            if (!validPassword){
+                binding.passUserContainer.helperText = "Masukan password!"
+            }
+            Toast.makeText(requireContext(),"Login gagal!",Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun usernameFocusListener() {
+        binding.etUsername.setOnFocusChangeListener { view, focused ->
+            if (!focused){
+                binding.usernameContainer.helperText = validUsername()
+            }
+        }
+    }
+
+    private fun passwordFocusListener() {
+        binding.etPassword.setOnFocusChangeListener { view, focused ->
+            if (!focused){
+                binding.passUserContainer.helperText = validPassword()
+            }
+        }
+    }
+
+    private fun validUsername(): String? {
+        username = binding.etUsername.text.toString().trim()
+        if (username.isEmpty()){
+            return "Masukan username!"
+        }
+        return null
+    }
+
+    private fun validPassword(): String? {
+        password = binding.etPassword.text.toString().trim()
+        if (password.isEmpty()){
+            return "Masukan password!"
+        }
+        return null
     }
 
     private fun navigateToRegisterPage() {
@@ -74,6 +123,23 @@ class LoginFragment : Fragment() {
     private fun bindingView(): View {
         binding = FragmentLoginBinding.inflate(layoutInflater)
         return binding.root
+    }
+
+    override fun loginPengunjung(username: String, password: String) {
+        LoginPresenter(requireActivity(),this)
+            .loginPengunjung(
+                username,
+                password
+            )
+    }
+
+    override fun onLoginSuccess(message: String) {
+        Toast.makeText(context,message,Toast.LENGTH_LONG).show()
+        navigateToDashboard()
+    }
+
+    override fun onLoginFail(message: String) {
+        Toast.makeText(context,message,Toast.LENGTH_LONG).show()
     }
 
 
