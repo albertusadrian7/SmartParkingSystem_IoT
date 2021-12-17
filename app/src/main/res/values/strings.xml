@@ -16,6 +16,7 @@
     <string name="email">Email</string>
     <string name="no_hp">No. HP</string>
     <string name="registrasi_sukses">Registrasi berhasil!</string>
+    <string name="registrasi_gagal">Registrasi gagal!</string>
     <string name="login_sukses">Login berhasil!</string>
     <string name="login_gagal">Login gagal!</string>
 

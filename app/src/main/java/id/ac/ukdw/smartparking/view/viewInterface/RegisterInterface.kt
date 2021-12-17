@@ -10,4 +10,5 @@ interface RegisterInterface {
         role: String
     )
     fun onRegisterSuccess(message: String)
+    fun onRegisterFail(message: String)
 }

@@ -53,18 +53,29 @@ class RegisterPresenter(private val activity: Activity, private val view: Regist
                     call: Call<CreatePengunjungResponse>,
                     response: Response<CreatePengunjungResponse>
                 ) {
-                    saveSession(
-                        id_user,
-                        username,
-                        email,
-                        password,
-                        name,
-                        role
-                    )
-                    Toast.makeText(activity,"Pesan: ${response.body()?.message.toString()}", Toast.LENGTH_SHORT).show()
+                    when(response.isSuccessful){
+                        true -> {
+                            if (response.body()?.status == 1){
+                                saveSession(
+                                    id_user,
+                                    username,
+                                    email,
+                                    password,
+                                    name,
+                                    role
+                                )
+                                view.onRegisterSuccess(activity.getString(R.string.registrasi_sukses))
+                                Toast.makeText(activity,"Pesan: ${response.body()?.message.toString()}", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                        false -> {
+                            view.onRegisterFail(activity.getString(R.string.registrasi_gagal))
+                            Toast.makeText(activity,"Pesan: ${response.body()?.message.toString()}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 }
-
                 override fun onFailure(call: Call<CreatePengunjungResponse>, t: Throwable) {
+                    view.onRegisterFail(activity.getString(R.string.registrasi_gagal))
                     Log.i(TAG, "onFailure: ${t.message}")
                 }
             })
