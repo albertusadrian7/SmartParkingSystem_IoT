@@ -27,7 +27,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/menu_pengunjung_dashboard_bottom"
-            app:labelVisibilityMode="labeled">
+            app:labelVisibilityMode="unlabeled">
 
 
         </com.google.android.material.bottomnavigation.BottomNavigationView>

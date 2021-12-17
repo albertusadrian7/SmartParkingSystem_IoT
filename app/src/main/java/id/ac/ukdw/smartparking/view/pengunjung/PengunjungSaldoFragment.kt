@@ -7,11 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import id.ac.ukdw.smartparking.databinding.FragmentPengunjungNewsBinding
+import id.ac.ukdw.smartparking.databinding.FragmentPengunjungSaldoBinding
 import id.ac.ukdw.smartparking.view.main.AuthActivity
 
-class PengunjungNewsFragment : Fragment() {
-    private lateinit var binding: FragmentPengunjungNewsBinding
+class PengunjungSaldoFragment : Fragment() {
+    private lateinit var binding: FragmentPengunjungSaldoBinding
     private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreateView(
@@ -38,7 +38,7 @@ class PengunjungNewsFragment : Fragment() {
     }
 
     private fun bindingView(): View {
-        binding = FragmentPengunjungNewsBinding.inflate(layoutInflater)
+        binding = FragmentPengunjungSaldoBinding.inflate(layoutInflater)
         return binding.root
     }
 

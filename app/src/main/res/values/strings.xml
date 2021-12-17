@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Sma-RT</string>
+    <string name="app_name">Smart Parking</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="splashscreen_text">Pengelola RT terbaikmu!</string>
+    <string name="splashscreen_text">Parkir nyaman dan aman!</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="lupa_password">Lupa password?</string>

@@ -21,6 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            android:paddingHorizontal="@dimen/_24sdp"
             android:background="@drawable/rounded_form_white"
             android:paddingBottom="70dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -33,7 +34,6 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
                 android:layout_marginTop="42dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="@string/daftar"
@@ -47,9 +47,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
-                android:layout_marginEnd="24dp"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -69,45 +67,16 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/jenisKelaminContainer"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:id="@+id/emailContainer"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="24dp"
-                android:background="@drawable/input_form_auth"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/namaContainer">
-
-                <AutoCompleteTextView
-                    android:id="@+id/etJenisKelamin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/input_form_auth"
-                    android:fontFamily="@font/poppins"
-                    android:inputType="none"
-                    android:text="@string/jenis_kelamin"
-                    android:textSize="12sp"
-                    android:entries="@array/jenis_kelamin"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/emailContainer"
-                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="24dp"
-                app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/jenisKelaminContainer">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etEmail"
@@ -121,45 +90,17 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/noHpContainer"
-                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="24dp"
-                app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/emailContainer">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etNoHP"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/input_form_auth"
-                    android:fontFamily="@font/poppins"
-                    android:hint="@string/no_hp"
-                    android:inputType="number"
-                    android:textSize="12sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/passwordContainer"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="24dp"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp"
                 app:passwordToggleEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/noHpContainer">
+                app:layout_constraintTop_toBottomOf="@+id/emailContainer">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPassword"
@@ -178,9 +119,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="24dp"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp"
                 app:passwordToggleEnabled="true"
@@ -200,39 +139,12 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/kodeKeluargaContainer"
-                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="24dp"
-                app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/confirmPasswordContainer">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etKodeKeluarga"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/input_form_auth"
-                    android:fontFamily="@font/poppins"
-                    android:hint="@string/kode_keluarga"
-                    android:textSize="12sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnRegisterWarga"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="24dp"
                 android:background="@drawable/rounded_button_auth"
                 android:fontFamily="@font/poppins_semibold"
                 android:hint="@string/daftar"
@@ -242,7 +154,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/kodeKeluargaContainer"
+                app:layout_constraintTop_toBottomOf="@+id/confirmPasswordContainer"
                 app:layout_constraintVertical_bias="0.0" />
 
             <LinearLayout
@@ -273,7 +185,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/poppins_semibold"
                     android:text="@string/masuk"
-                    android:textColor="@color/primary_orange" />
+                    android:textColor="@color/primary_green" />
             </LinearLayout>
 
 

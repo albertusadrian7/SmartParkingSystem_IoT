@@ -52,23 +52,18 @@ class WargaRegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setFormJenisKelamin()
+//        setFormJenisKelamin()
         navigateToLoginPage()
         setLightStatusBar(view)
         nameFocusListener()
         emailFocusListener()
         passwordFocusListener()
-        familyCodeFocusListener()
         confirmPasswordFocusListener()
-        numPhoneFocusListener()
         binding.btnRegisterWarga.setOnClickListener {
             binding.etNamaLengkap.clearFocus()
             binding.etEmail.clearFocus()
-            binding.etJenisKelamin.clearFocus()
-            binding.etNoHP.clearFocus()
             binding.etPassword.clearFocus()
             binding.etKonfirmasiPassword.clearFocus()
-            binding.etKodeKeluarga.clearFocus()
             submitForm()
         }
     }
@@ -78,10 +73,8 @@ class WargaRegisterFragment : Fragment() {
         val validEmail = !binding.etEmail.text.isNullOrEmpty()
         val validPassword = !binding.etPassword.text.isNullOrEmpty()
         val validConfirmPassword = !binding.etKonfirmasiPassword.text.isNullOrEmpty()
-        val validKodeKeluarga = !binding.etKodeKeluarga.text.isNullOrEmpty()
-        val validNoHp = !binding.etNoHP.text.isNullOrEmpty()
         val validGender = !gender.isNullOrEmpty()
-        if (validName && validEmail && validPassword && validConfirmPassword && validGender && validKodeKeluarga && validNoHp){
+        if (validName && validEmail && validPassword && validConfirmPassword && validGender){
             if (password != konfirmasiPassword){
                 binding.confirmPasswordContainer.helperText = "Password tidak sesuai!"
             } else {
@@ -92,14 +85,8 @@ class WargaRegisterFragment : Fragment() {
             if (!validName){
                 binding.namaContainer.helperText = "Masukan nama!"
             }
-            if (!validGender){
-                binding.jenisKelaminContainer.helperText = "Pilih jenis kelamin!"
-            }
             if (!validEmail){
                 binding.emailContainer.helperText = "Masukan email!"
-            }
-            if (!validNoHp){
-                binding.noHpContainer.helperText = "Masukan nomor HP!"
             }
             if (!validPassword){
                 binding.passwordContainer.helperText = "Masukan password!"
@@ -107,23 +94,10 @@ class WargaRegisterFragment : Fragment() {
             if (!validConfirmPassword){
                 binding.confirmPasswordContainer.helperText = "Masukan konfirmasi password!"
             }
-            if (!validKodeKeluarga){
-                binding.kodeKeluargaContainer.helperText = "Masukan kode keluarga!"
-            }
             Toast.makeText(requireContext(),"Registrasi gagal!",Toast.LENGTH_LONG).show()
         }
     }
 
-    private fun setFormJenisKelamin() {
-        val jenisKelamin =  resources.getStringArray(R.array.jenis_kelamin)
-        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.jenis_kelamin_menu, jenisKelamin)
-        autoCompleteTextView = binding.etJenisKelamin
-        autoCompleteTextView.setAdapter(arrayAdapter)
-        binding.etJenisKelamin.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
-            gender = parent.getItemAtPosition(position).toString().lowercase().trim()
-            binding.jenisKelaminContainer.helperText = null
-        }
-    }
 
     private fun nameFocusListener(){
         binding.etNamaLengkap.setOnFocusChangeListener { view, focused ->
@@ -133,13 +107,6 @@ class WargaRegisterFragment : Fragment() {
         }
     }
 
-    private fun numPhoneFocusListener(){
-        binding.etNoHP.setOnFocusChangeListener { view, focused ->
-            if (!focused){
-                binding.noHpContainer.helperText = validNoHp()
-            }
-        }
-    }
 
     private fun emailFocusListener(){
         binding.etEmail.setOnFocusChangeListener { view, focused ->
@@ -165,34 +132,10 @@ class WargaRegisterFragment : Fragment() {
         }
     }
 
-    private fun familyCodeFocusListener(){
-        binding.etKodeKeluarga.setOnFocusChangeListener { view, focused ->
-            if (!focused){
-                binding.kodeKeluargaContainer.helperText = validFamilyCode()
-            }
-        }
-    }
-
     private fun validConfirmPassword(): String? {
         konfirmasiPassword = binding.etKonfirmasiPassword.text.toString().trim()
         if (konfirmasiPassword.isEmpty()){
             return "Masukan konfirmasi password!"
-        }
-        return null
-    }
-
-    private fun validFamilyCode():String?{
-        kodeKeluarga = binding.etKodeKeluarga.text.toString().trim()
-        if (kodeKeluarga.isEmpty()){
-            return "Masukan kode keluarga!"
-        }
-        return null
-    }
-
-    private fun validNoHp(): String? {
-        noHP = binding.etNoHP.text.toString().trim()
-        if (noHP.isEmpty()){
-            return "Masukan nomor handphone!"
         }
         return null
     }

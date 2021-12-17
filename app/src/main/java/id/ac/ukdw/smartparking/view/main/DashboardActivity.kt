@@ -25,8 +25,8 @@ class DashboardActivity : AppCompatActivity() {
 
         val appBarConfiguration = AppBarConfiguration(setOf(
             R.id.dashboardFragment,
-            R.id.newsFragment,
-            R.id.marketFragment
+            R.id.saldoFragment,
+            R.id.parkirFragment
         ))
         setupActionBarWithNavController(navController, appBarConfiguration)
 
@@ -44,8 +44,8 @@ class DashboardActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.dashboardFragment -> showBottomNav()
-                R.id.newsFragment -> showBottomNav()
-                R.id.marketFragment -> showBottomNav()
+                R.id.saldoFragment -> showBottomNav()
+                R.id.parkirFragment -> showBottomNav()
                 else -> hideBottomNav()
             }
         }

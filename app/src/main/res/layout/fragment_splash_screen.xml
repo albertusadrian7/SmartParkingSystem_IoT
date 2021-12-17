@@ -5,21 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="view.auth.SplashScreenFragment"
-    android:background="@color/primary_blue">
+    android:background="@color/primary_green">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="468dp"
-        android:layout_height="294dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.05"
-        app:srcCompat="@drawable/pattern" />
-
-    <ImageView
+    <TextView
         android:id="@+id/imageView4"
         android:layout_width="241dp"
         android:layout_height="199dp"
@@ -27,7 +15,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        android:text="Parkir!"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_48ssp"
+        android:fontFamily="@font/poppins_medium"
+        android:textAlignment="center"/>
 
     <TextView
         android:id="@+id/textView"

@@ -10,13 +10,13 @@
         android:label="PengunjungDashboardFragment"
         tools:layout="@layout/fragment_pengunjung_dashboard"/>
     <fragment
-        android:id="@+id/newsFragment"
-        android:name="id.ac.ukdw.smartparking.view.pengunjung.PengunjungNewsFragment"
-        android:label="PengunjungNewsFragment"
-        tools:layout="@layout/fragment_pengunjung_news"/>
+        android:id="@+id/saldoFragment"
+        android:name="id.ac.ukdw.smartparking.view.pengunjung.PengunjungSaldoFragment"
+        android:label="PengunjungSaldoFragment"
+        tools:layout="@layout/fragment_pengunjung_saldo"/>
     <fragment
-        android:id="@+id/marketFragment"
-        android:name="id.ac.ukdw.smartparking.view.pengunjung.PengunjungMarketFragment"
-        android:label="PengunjungMarketFragment"
-        tools:layout="@layout/fragment_pengunjung_news"/>
+        android:id="@+id/parkirFragment"
+        android:name="id.ac.ukdw.smartparking.view.pengunjung.PengunjungParkirFragment"
+        android:label="PengunjungParkirFragment"
+        tools:layout="@layout/fragment_pengunjung_parkir"/>
 </navigation>

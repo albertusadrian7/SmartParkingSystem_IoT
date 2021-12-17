@@ -7,13 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import id.ac.ukdw.smartparking.databinding.FragmentPengunjungDashboardBinding
-import id.ac.ukdw.smartparking.databinding.FragmentPengunjungMarketBinding
+import id.ac.ukdw.smartparking.view.adapter.RiwayatAdapter
 import id.ac.ukdw.smartparking.view.main.AuthActivity
 
 class PengunjungDashboardFragment : Fragment() {
     private lateinit var binding: FragmentPengunjungDashboardBinding
     private lateinit var sharedPreferences: SharedPreferences
+
+    private lateinit var rvRiwayat: RecyclerView
+    private lateinit var riwayatAdapter: RiwayatAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,7 +30,14 @@ class PengunjungDashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setRecyclerView()
+    }
 
+    private fun setRecyclerView() {
+        riwayatAdapter = RiwayatAdapter()
+        rvRiwayat = binding.rvRiwayat
+        rvRiwayat.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL ,false)
+        rvRiwayat.setAdapter(riwayatAdapter)
     }
 
     private fun navigateToHomePage() {

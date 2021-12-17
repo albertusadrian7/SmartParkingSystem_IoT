@@ -1,105 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="@dimen/_32sdp"
+    android:padding="@dimen/_16sdp"
     android:id="@+id/toolbar">
 
-    <View
-        android:id="@+id/view2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#111"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.08"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
+    <ImageView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@+id/view2"
-        app:layout_constraintLeft_toLeftOf="@+id/view2"
-        app:layout_constraintRight_toRightOf="@+id/view2"
-        app:layout_constraintTop_toTopOf="@+id/view2">
+        android:src="@drawable/ic_icon_bell"
+        android:layout_alignParentStart="true"
+        app:tint="@color/black" />
 
-        <Button
-            android:id="@+id/btn_toolbar_home"
-            android:layout_width="86dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:drawableTop="@drawable/ic_toolbar_icon_home"
-            android:fontFamily="@font/poppins"
-            android:text="@string/home"
-            android:textColor="@color/grey_2"
-            android:textSize="10sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/poppins_medium"
+        android:text="SmartParking"
+        android:textSize="@dimen/_16sdp"
+        android:textColor="@color/black" />
 
-        <Button
-            android:id="@+id/btn_toolbar_news"
-            android:layout_width="86dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:drawableTop="@drawable/ic_toolbar_icon_news"
-            android:fontFamily="@font/poppins"
-            android:text="@string/news"
-            android:textColor="@color/grey_2"
-            android:textSize="10sp" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_toolbar_icon_user"
+        app:tint="@color/black"
+        />
 
-        <Button
-            android:id="@+id/support_btn_toolbar_main"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@drawable/round_button"
-            android:drawableTop="@drawable/ic_toolbar_icon_news"
-            android:text="@string/news"
-            android:textColor="@color/white"
-            android:layout_weight="1"
-            android:visibility="invisible"/>
-
-        <Button
-            android:id="@+id/btn_toolbar_market"
-            android:layout_width="86dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:drawableTop="@drawable/ic_toolbar_icon_market"
-            android:fontFamily="@font/poppins"
-            android:text="@string/market"
-            android:textColor="@color/grey_2"
-            android:textSize="10sp" />
-
-        <Button
-            android:id="@+id/btn_toolbar_profile"
-            android:layout_width="86dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:drawableTop="@drawable/ic_toolbar_icon_user"
-            android:fontFamily="@font/poppins"
-            android:text="@string/akun"
-            android:textColor="@color/grey_2"
-            android:textSize="10sp" />
-
-    </LinearLayout>
-
-
-    <Button
-        android:id="@+id/btn_toolbar_main"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="-50dp"
-        android:background="@drawable/round_button"
-        android:drawableTop="@drawable/ic_toolbar_icon_news"
-        android:text="@string/news"
-        android:textSize="10sp"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
