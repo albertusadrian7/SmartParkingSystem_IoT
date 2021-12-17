@@ -2,6 +2,7 @@ package id.ac.ukdw.smartparking.view.auth
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,8 +14,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import id.ac.ukdw.smartparking.databinding.FragmentLoginBinding
 import id.ac.ukdw.smartparking.extentions.UserValidator
+import id.ac.ukdw.smartparking.presenter.LoginPresenter
 import id.ac.ukdw.smartparking.view.main.AuthActivity
 import id.ac.ukdw.smartparking.view.main.DashboardActivity
+import id.ac.ukdw.smartparking.view.viewInterface.LoginInterface
 
 class LoginFragment : Fragment(), LoginInterface {
     private lateinit var binding: FragmentLoginBinding
