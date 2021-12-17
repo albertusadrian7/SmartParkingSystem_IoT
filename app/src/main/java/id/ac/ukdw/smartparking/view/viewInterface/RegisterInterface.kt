@@ -1,13 +1,14 @@
 package id.ac.ukdw.smartparking.view.viewInterface
 
-interface RegisterWargaInterface {
-    fun registerWarga(
-        kodeKeluarga: String,
+interface RegisterInterface {
+    fun registerPengunjung(
+        id_user: String,
+        username: String,
         email: String,
         password: String,
         name: String,
-        gender: String,
-        noHP: String
+        role: String
     )
     fun onRegisterSuccess(message: String)
+    fun onRegisterFail(message: String)
 }

@@ -1,30 +1,31 @@
 package id.ac.ukdw.smartparking.api
 
+import id.ac.ukdw.smartparking.model.login.OnLoginSuccessResponse
+import id.ac.ukdw.smartparking.model.pengunjung.CreatePengunjungResponse
 import retrofit2.Call
 import retrofit2.http.*
 
 interface Service {
-//
-//    // Register Warga
-//    @FormUrlEncoded
-//    @POST("warga")
-//    fun signUpWarga(
-//        @Field("kode_keluarga") kode_keluarga: String,
-//        @Field("nama") nama: String,
-//        @Field("email") email: String,
-//        @Field("password") password: String,
-//        @Field("no_hp") no_hp: String,
-//        @Field("gender") gender: String
-//    ): Call<CreateWargaResponse>
-//
-//    // Login Warga
-//    @FormUrlEncoded
-//    @POST("warga/login")
-//    fun loginWarga(
-//        @Field("email") email: String,
-//        @Field("password") password: String
-//    ): Call<OnLoginSuccessResponse>
-//
+    // Register Pengunjung
+    @FormUrlEncoded
+    @POST("userApi.php?function=insert_user")
+    fun signUpPengunjung(
+        @Field("id_user") id_user: String,
+        @Field("username") username: String,
+        @Field("email") email: String,
+        @Field("password") password: String,
+        @Field("nama") nama: String,
+        @Field("role") role: String
+    ): Call<CreatePengunjungResponse>
+
+    // Login Pengunjung
+    @FormUrlEncoded
+    @POST("userApi.php?function=login_user")
+    fun loginPengunjung(
+        @Field("username") username: String,
+        @Field("password") password: String
+    ): Call<OnLoginSuccessResponse>
+
 //    // Register Pengurus
 //    @FormUrlEncoded
 //    @POST("pengurus")
@@ -80,7 +81,5 @@ interface Service {
 //        @Header("Authorization") authHeader: String,
 //        @Path("product_id") product_id: String,
 //    ): Call<DeleteProductResponse>
-
-
 
 }

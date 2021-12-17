@@ -45,15 +45,11 @@ class UserSession(activity: Activity) {
 
     companion object {
         const val SHARED_PREFERENCE_ID_KEY = "ID CODE"
-        const val SHARED_PREFERENCE_CODE_RT_KEY = "RT CODE"
-        const val SHARED_PREFERENCE_FAMILY_ID_KEY = "FAMILY ID CODE"
-        const val SHARED_PREFERENCE_TOKEN_KEY = "TOKEN CODE"
+        const val SHARED_PREFERENCE_USERNAME_KEY = "USERNAME CODE"
         const val SHARED_PREFERENCE_EMAIL_KEY = "EMAIL CODE"
         const val SHARED_PREFERENCE_PASSWORD_KEY = "PASSWORD CODE"
         const val SHARED_PREFERENCE_NAME_KEY = "NAME CODE"
-        const val SHARED_PREFERENCE_PICTURE_KEY = "PICTURE CODE"
-        const val SHARED_PREFERENCE_GENDER_KEY = "GENDER CODE"
-        const val SHARED_PREFERENCE_PHONE_NUMBER_KEY = "NOHP CODE"
+        const val SHARED_PREFERENCE_ROLE_KEY = "ROLE CODE"
         const val SHARED_PREFERENCE_SESSION_KEY = "SESSION CODE"
     }
 }
