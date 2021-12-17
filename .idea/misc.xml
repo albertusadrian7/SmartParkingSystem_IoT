@@ -8,17 +8,20 @@
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/drawable-v24/rounded_10.xml" value="0.26614583333333336" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/drawable-v24/rounded_button_auth.xml" value="0.14322916666666666" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/drawable-v24/rounded_form_white.xml" value="0.26614583333333336" />
+        <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/drawable-v24/rounded_top_30.xml" value="0.14322916666666666" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/drawable/item_kelola_produk.xml" value="0.26614583333333336" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/activity_auth.xml" value="0.25" />
+        <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/activity_main.xml" value="0.12708333333333333" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/activity_pengunjung_dashboard.xml" value="0.4" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/activity_warga_dashboard.xml" value="0.12708333333333333" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_auth_login_choice.xml" value="0.25" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_landing_page_screen_one.xml" value="0.12708333333333333" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_login.xml" value="0.12708333333333333" />
-        <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_pengunjung_dashboard.xml" value="0.176" />
+        <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_pengunjung_dashboard.xml" value="0.4" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_pengunjung_parkir.xml" value="0.176" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_pengunjung_profile.xml" value="0.25" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_pengunjung_saldo.xml" value="0.264" />
+        <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_pengunjung_test.xml" value="0.264" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_pengurus_market.xml" value="0.12708333333333333" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_pengurus_news.xml" value="0.12708333333333333" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_register.xml" value="0.3096446700507614" />

@@ -23,7 +23,7 @@
         >
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cvA1"
+            android:id="@+id/cvA"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1.0"
@@ -31,7 +31,7 @@
             app:cardCornerRadius="@dimen/_16sdp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/bgA1"
+                android:id="@+id/bgA"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/primary_green"
@@ -43,7 +43,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:text="A1"
+                    android:text="A"
                     android:fontFamily="@font/poppins_bold"
                     android:textSize="@dimen/_16ssp"
                     android:textColor="@color/white"
@@ -54,7 +54,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cvA2"
+            android:id="@+id/cvB"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/_12sdp"
@@ -62,7 +62,7 @@
             app:cardCornerRadius="@dimen/_16sdp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/bgA2"
+                android:id="@+id/bgB"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/primary_green"
@@ -74,7 +74,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:text="A2"
+                    android:text="B"
                     android:fontFamily="@font/poppins_bold"
                     android:textSize="@dimen/_16ssp"
                     android:textColor="@color/white"
@@ -100,7 +100,7 @@
         >
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cvA3"
+            android:id="@+id/cvC"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1.0"
@@ -108,7 +108,7 @@
             app:cardCornerRadius="@dimen/_16sdp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/bgA3"
+                android:id="@+id/bgC"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/primary_green"
@@ -120,7 +120,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:text="A3"
+                    android:text="C"
                     android:fontFamily="@font/poppins_bold"
                     android:textSize="@dimen/_16ssp"
                     android:textColor="@color/white"
@@ -131,7 +131,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cvA4"
+            android:id="@+id/cvD"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/_12sdp"
@@ -139,7 +139,7 @@
             app:cardCornerRadius="@dimen/_16sdp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/bgA4"
+                android:id="@+id/bgD"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/primary_green"
@@ -151,7 +151,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:text="A4"
+                    android:text="D"
                     android:fontFamily="@font/poppins_bold"
                     android:textSize="@dimen/_16ssp"
                     android:textColor="@color/white"
