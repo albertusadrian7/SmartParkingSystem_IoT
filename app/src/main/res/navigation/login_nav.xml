@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="id.ac.ukdw.smartparking.view.auth.WargaRegisterFragment"
+        android:name="id.ac.ukdw.smartparking.view.auth.RegisterFragment"
         android:label="RegisterFragment"
         tools:layout="@layout/fragment_register">
         <action

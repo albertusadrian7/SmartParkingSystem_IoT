@@ -1,5 +1,6 @@
 package id.ac.ukdw.smartparking.view.auth
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,18 +16,19 @@ import android.widget.Toast
 import id.ac.ukdw.smartparking.R
 import id.ac.ukdw.smartparking.databinding.FragmentRegisterBinding
 import id.ac.ukdw.smartparking.extentions.UserValidator
+import id.ac.ukdw.smartparking.presenter.RegisterPresenter
+import id.ac.ukdw.smartparking.view.main.DashboardActivity
+import id.ac.ukdw.smartparking.view.viewInterface.RegisterInterface
 
 
-class WargaRegisterFragment : Fragment() {
+class RegisterFragment : Fragment(), RegisterInterface {
     private lateinit var binding: FragmentRegisterBinding
-    private lateinit var autoCompleteTextView: AutoCompleteTextView
-    private var kodeKeluarga: String = ""
+    private var username: String = ""
     private var email: String = ""
     private var password: String = ""
-    private var konfirmasiPassword: String = ""
+    private var confirmPassword: String = ""
     private var nama: String = ""
-    private var gender: String = ""
-    private var noHP: String = ""
+    private var role: String = "pengunjung"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,15 +54,16 @@ class WargaRegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        setFormJenisKelamin()
         navigateToLoginPage()
         setLightStatusBar(view)
         nameFocusListener()
         emailFocusListener()
+        usernameFocusListener()
         passwordFocusListener()
         confirmPasswordFocusListener()
         binding.btnRegisterWarga.setOnClickListener {
             binding.etNamaLengkap.clearFocus()
+            binding.etUsername.clearFocus()
             binding.etEmail.clearFocus()
             binding.etPassword.clearFocus()
             binding.etKonfirmasiPassword.clearFocus()
@@ -68,18 +71,41 @@ class WargaRegisterFragment : Fragment() {
         }
     }
 
+    private fun usernameFocusListener() {
+        binding.etUsername.setOnFocusChangeListener { view, focused ->
+            if (!focused){
+                binding.usernameContainer.helperText = validUsername()
+            }
+        }
+    }
+
+    private fun validUsername(): CharSequence? {
+        username = binding.etUsername.text.toString().trim()
+        var isValidUsername = UserValidator.isNameValid(username)
+        var isNameIncludeLetters = UserValidator.isNameIncludeLetters(username)
+        if (username.isEmpty()){
+            return "Masukan username!"
+        }
+        if (!isValidUsername){
+            if (!isNameIncludeLetters){
+                return "Nama harus mengandung karakter!"
+            }
+        }
+        return null
+    }
+
     private fun submitForm(){
         val validName = !binding.etNamaLengkap.text.isNullOrEmpty()
         val validEmail = !binding.etEmail.text.isNullOrEmpty()
         val validPassword = !binding.etPassword.text.isNullOrEmpty()
         val validConfirmPassword = !binding.etKonfirmasiPassword.text.isNullOrEmpty()
-        val validGender = !gender.isNullOrEmpty()
-        if (validName && validEmail && validPassword && validConfirmPassword && validGender){
-            if (password != konfirmasiPassword){
+        val validUsername = !binding.etUsername.text.isNullOrEmpty()
+        if (validName && validEmail && validPassword && validConfirmPassword && validUsername){
+            if (password != confirmPassword){
                 binding.confirmPasswordContainer.helperText = "Password tidak sesuai!"
             } else {
-                Log.d("TAG", "kode keluarga: $kodeKeluarga; Email: $email; password: $password; nama: $nama; gender: $gender")
-//                registerWarga(kodeKeluarga,email,password,nama,gender,noHP)
+                Log.d("TAG", "Nama: $nama; Email: $email; password: $password; role: $role; username: $username")
+                registerPengunjung("",username,email,password,nama,role)
             }
         } else {
             if (!validName){
@@ -87,6 +113,9 @@ class WargaRegisterFragment : Fragment() {
             }
             if (!validEmail){
                 binding.emailContainer.helperText = "Masukan email!"
+            }
+            if (!validUsername){
+                binding.usernameContainer.helperText = "Masukan username!"
             }
             if (!validPassword){
                 binding.passwordContainer.helperText = "Masukan password!"
@@ -98,7 +127,6 @@ class WargaRegisterFragment : Fragment() {
         }
     }
 
-
     private fun nameFocusListener(){
         binding.etNamaLengkap.setOnFocusChangeListener { view, focused ->
             if (!focused){
@@ -106,7 +134,6 @@ class WargaRegisterFragment : Fragment() {
             }
         }
     }
-
 
     private fun emailFocusListener(){
         binding.etEmail.setOnFocusChangeListener { view, focused ->
@@ -133,8 +160,8 @@ class WargaRegisterFragment : Fragment() {
     }
 
     private fun validConfirmPassword(): String? {
-        konfirmasiPassword = binding.etKonfirmasiPassword.text.toString().trim()
-        if (konfirmasiPassword.isEmpty()){
+        confirmPassword = binding.etKonfirmasiPassword.text.toString().trim()
+        if (confirmPassword.isEmpty()){
             return "Masukan konfirmasi password!"
         }
         return null
@@ -196,9 +223,43 @@ class WargaRegisterFragment : Fragment() {
 
     private fun navigateToLoginPage() {
         binding.tvMasuk.setOnClickListener {
-            val direction = WargaRegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
+            val direction = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
             findNavController().navigate(direction)
         }
+    }
+
+    override fun registerPengunjung(
+        id_user: String,
+        username: String,
+        email: String,
+        password: String,
+        name: String,
+        role: String
+    ) {
+        RegisterPresenter(requireActivity(),this)
+            .registerPengunjung(
+                id_user,
+                username,
+                email,
+                password,
+                name,
+                role
+            )
+    }
+
+    override fun onRegisterSuccess(message: String) {
+        Toast.makeText(context,message,Toast.LENGTH_LONG).show()
+        navigateToDashboard()
+    }
+
+    private fun navigateToDashboard() {
+        Thread.sleep(1000)
+        val intent = Intent(
+            requireActivity(),
+            DashboardActivity::class.java
+        )
+        startActivity(intent)
+        requireActivity().finish()
     }
 
 
