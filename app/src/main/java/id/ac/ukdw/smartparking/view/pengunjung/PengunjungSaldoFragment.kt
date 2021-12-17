@@ -1,64 +1,64 @@
 package id.ac.ukdw.smartparking.view.pengunjung
 
-import android.content.Intent
-import android.content.SharedPreferences
-import android.os.Build
+import android.content.DialogInterface
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import id.ac.ukdw.smartparking.R
 import id.ac.ukdw.smartparking.databinding.FragmentPengunjungSaldoBinding
-import id.ac.ukdw.smartparking.view.adapter.RiwayatAdapter
-import id.ac.ukdw.smartparking.view.adapter.RiwayatSaldoAdapter
-import id.ac.ukdw.smartparking.view.main.AuthActivity
+import java.text.NumberFormat
+import java.util.*
 
-class PengunjungSaldoFragment : Fragment() {
+
+class PengunjungSaldoFragment : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentPengunjungSaldoBinding
-    private lateinit var sharedPreferences: SharedPreferences
-
-    private lateinit var rvRiwayatSaldo: RecyclerView
-    private lateinit var riwayatSaldoAdapter: RiwayatSaldoAdapter
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
+//        val view = inflater.inflate(R.layout.fragment_pengunjung_saldo,container,false)
+//        return view
         val view = bindingView()
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setLightStatusBar(view)
-        setRecyclerView()
+        inputRupiah()
     }
 
-    fun setLightStatusBar(view: View) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            var flags = view.systemUiVisibility
-            flags = flags or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-            view.systemUiVisibility = flags
-        }
-    }
+    private fun inputRupiah() {
+        binding.etJumlahTopUp.addTextChangedListener(object : TextWatcher {
+            var setEditText = binding.etJumlahTopUp
+            var current: String = ""
+            override fun afterTextChanged(s: Editable?) {
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (!s.toString().equals(current)) {
+                    setEditText.removeTextChangedListener(this)
 
-    private fun setRecyclerView() {
-        riwayatSaldoAdapter = RiwayatSaldoAdapter()
-        rvRiwayatSaldo = binding.rvRiwayatSaldo
-        rvRiwayatSaldo.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL ,false)
-        rvRiwayatSaldo.setAdapter(riwayatSaldoAdapter)
-    }
+                    val cleanString: String = s!!.replace("""[Rp,. ]""".toRegex(), "")
 
-    private fun navigateToHomePage() {
-        Thread.sleep(1000)
-        val intent = Intent(
-            requireActivity(),
-            AuthActivity::class.java
-        )
-        startActivity(intent)
-        requireActivity().finish()
+                    val formatted = NumberFormat.getCurrencyInstance(Locale("id","ID")).format(cleanString.replace("[^\\d]".toRegex(),"").toLong())
+
+                    current = formatted
+                    setEditText.setText(formatted)
+                    setEditText.setSelection(formatted.length)
+
+                    setEditText.addTextChangedListener(this)
+                }
+            }
+        })
+
     }
 
     private fun bindingView(): View {
@@ -66,4 +66,8 @@ class PengunjungSaldoFragment : Fragment() {
         return binding.root
     }
 
+    override fun onDismiss(dialog: DialogInterface) {
+        super.onDismiss(dialog)
+        findNavController().navigate(R.id.dashboardFragment)
+    }
 }
