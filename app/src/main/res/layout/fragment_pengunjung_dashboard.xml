@@ -19,23 +19,22 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvKartu"
-                android:layout_marginHorizontal="@dimen/_32sdp"
-                android:layout_marginVertical="@dimen/_24sdp"
+                android:layout_margin="@dimen/_24sdp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_150sdp"
+                app:layout_constraintVertical_bias="1.0"
                 android:layout_gravity="center"
                 app:cardCornerRadius="@dimen/_16sdp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/toolbar"
                 app:layout_constraintBottom_toTopOf="@id/body"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:background="@drawable/item_kelola_produk">
+                app:layout_constraintEnd_toEndOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/primary_green"
-                    android:padding="@dimen/_24sdp"
+                    android:padding="@dimen/_16sdp"
                     >
 
                     <TextView
@@ -45,11 +44,9 @@
                         android:text="**** **** **** 4567"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toTopOf="@id/tvSaldo"
                         android:textColor="@color/white"
                         android:fontFamily="@font/poppins_medium"
                         android:textSize="@dimen/_10ssp"
-                        android:layout_marginBottom="@dimen/_16sdp"
                         />
 
                     <TextView
@@ -68,7 +65,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Saldo"
-                        app:layout_constraintTop_toBottomOf="@id/tvIdKartu"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintBottom_toTopOf="@id/tvJumlahSaldo"
                         android:textColor="@color/white"
@@ -97,12 +93,12 @@
                 android:id="@+id/body"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                app:layout_constraintHeight_percent="0.5"
                 android:background="@drawable/rounded_top_30"
                 app:layout_constraintVertical_bias="1.0"
                 android:paddingHorizontal="@dimen/_24sdp"
                 android:paddingTop="@dimen/_24sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cvKartu"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 

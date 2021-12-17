@@ -13,11 +13,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import id.ac.ukdw.smartparking.databinding.FragmentLoginBinding
 import id.ac.ukdw.smartparking.extentions.UserValidator
-import id.ac.ukdw.smartparking.presenter.LoginPresenter
-import id.ac.ukdw.smartparking.presenter.RegisterPresenter
 import id.ac.ukdw.smartparking.view.main.AuthActivity
 import id.ac.ukdw.smartparking.view.main.DashboardActivity
-import id.ac.ukdw.smartparking.view.viewInterface.LoginInterface
 
 class LoginFragment : Fragment(), LoginInterface {
     private lateinit var binding: FragmentLoginBinding
@@ -36,12 +33,21 @@ class LoginFragment : Fragment(), LoginInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setLightStatusBar(view)
         usernameFocusListener()
         passwordFocusListener()
         binding.btnMasuk.setOnClickListener {
             binding.etUsername.clearFocus()
             binding.etPassword.clearFocus()
             submitForm()
+        }
+    }
+
+    fun setLightStatusBar(view: View) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            var flags = view.systemUiVisibility
+            flags = flags or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+            view.systemUiVisibility = flags
         }
     }
 
