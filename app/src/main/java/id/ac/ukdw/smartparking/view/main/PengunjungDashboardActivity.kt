@@ -26,7 +26,7 @@ import android.content.DialogInterface
 
 
 
-class DashboardActivity : AppCompatActivity() {
+class PengunjungDashboardActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -66,63 +66,6 @@ class DashboardActivity : AppCompatActivity() {
 
 //        setupNav()
 
-    }
-
-    private fun setupNav() {
-        val navController = findNavController(R.id.fragmentContainerView)
-        findViewById<BottomNavigationView>(R.id.bottom_nav)
-            .setupWithNavController(navController)
-
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                R.id.dashboardFragment -> showBottomNav()
-                R.id.saldoFragment -> {
-                    Toast.makeText(this,"Tombol telah berhasil diklik",Toast.LENGTH_SHORT).show()
-                    // on below line we are creating a new bottom sheet dialog.
-                    val dialog = BottomSheetDialog(this, R.style.AppBottomSheetDialogTheme)
-
-                    // on below line we are inflating a layout file which we have created.
-                    val view = layoutInflater.inflate(R.layout.fragment_pengunjung_test, null)
-
-                    // on below line we are creating a variable for our button
-                    // which we are using to dismiss our dialog.
-                    val btnClose = view.findViewById<Button>(R.id.btnMasuk)
-
-                    // on below line we are adding on click listener
-                    // for our dismissing the dialog button.
-                    btnClose.setOnClickListener {
-                        // on below line we are calling a dismiss
-                        // method to close our dialog.
-                        dialog.dismiss()
-                    }
-                    // below line is use to set cancelable to avoid
-                    // closing of dialog box when clicking on the screen.
-                    dialog.setCancelable(true)
-
-                    // on below line we are setting
-                    // content view to our view.
-                    dialog.setContentView(view)
-
-                    // on below line we are calling
-                    // a show method to display a dialog.
-                    dialog.show()
-                    showBottomNav()
-                }
-                R.id.parkirFragment -> showBottomNav()
-                else -> hideBottomNav()
-            }
-        }
-    }
-
-    private fun showBottomNav() {
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
-        bottomNavigationView.visibility = View.VISIBLE
-
-    }
-
-    private fun hideBottomNav() {
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
-        bottomNavigationView.visibility = View.GONE
     }
 
 }

@@ -1,66 +1,79 @@
-package id.ac.ukdw.smartparking.view.pengunjung
+package id.ac.ukdw.smartparking.view.pengelola
 
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
-import androidx.fragment.app.DialogFragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
+import com.google.firebase.database.*
 import id.ac.ukdw.smartparking.R
+import id.ac.ukdw.smartparking.databinding.FragmentPengelolaDashboardBinding
 import id.ac.ukdw.smartparking.extentions.UserSession
-import id.ac.ukdw.smartparking.view.adapter.RiwayatAdapter
-import id.ac.ukdw.smartparking.view.adapter.RiwayatViewPagerAdapter
+import id.ac.ukdw.smartparking.view.adapter.Penghasilan
+import id.ac.ukdw.smartparking.view.adapter.RiwayatPenghasilanHarianAdapter
 import id.ac.ukdw.smartparking.view.main.AuthActivity
 
 
-class PengunjungDashboardFragment : Fragment() {
+class PengelolaDashboardFragment : Fragment() {
+    private lateinit var binding: FragmentPengelolaDashboardBinding
     private lateinit var sharedPreferences: SharedPreferences
 
-    private lateinit var rvRiwayat: RecyclerView
-    private lateinit var riwayatAdapter: RiwayatAdapter
+    private lateinit var database: DatabaseReference
+
+    private lateinit var rvRiwayatPEnghasilanHarian: RecyclerView
+    private lateinit var listPenghasilan: ArrayList<Penghasilan>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pengunjung_dashboard, container, false)
+        val view = bindingView()
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setLightStatusBar(view)
-        tabLayoutRiwayat(view)
+        setRecyclerView()
         logOut(view)
 //        profile(view)
     }
 
-    private fun tabLayoutRiwayat(view: View) {
-        val listFragment: ArrayList<Fragment> = arrayListOf(PengunjungRiwayatParkirFragment(),PengunjungRiwayatSaldoFragment())
-        val tabLayout = view.findViewById<TabLayout>(R.id.tabLayoutRiwayat)
-        val viewPager = view.findViewById<ViewPager2>(R.id.viewPagerRiwayat)
-        val riwayatViewPagerAdapter = RiwayatViewPagerAdapter(listFragment,this)
-        viewPager.adapter = riwayatViewPagerAdapter
-        TabLayoutMediator(tabLayout,viewPager){tab,position->
-            when(position){
-                0->{
-                    tab.text = "Parkir"
-                }
-                1->{
-                    tab.text = "Saldo"
+    private fun setRecyclerView() {
+        rvRiwayatPEnghasilanHarian = binding.rvRiwayatParkir
+        rvRiwayatPEnghasilanHarian.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL ,false)
+        rvRiwayatPEnghasilanHarian.setHasFixedSize(true)
+
+        listPenghasilan = arrayListOf<Penghasilan>()
+        getDataPenghasilan()
+//        rvRiwayat.setAdapter(riwayatAdapter)
+    }
+
+    private fun getDataPenghasilan() {
+        database = FirebaseDatabase.getInstance().getReference("pemasukan/desember")
+        database.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                listPenghasilan.clear()
+                if(snapshot.exists()) {
+                    for(penghasilanSnapshot in snapshot.children) {
+                        val penghasilan = penghasilanSnapshot.getValue(Penghasilan::class.java)
+                        listPenghasilan.add(penghasilan!!)
+                    }
+                    rvRiwayatPEnghasilanHarian.adapter = RiwayatPenghasilanHarianAdapter(listPenghasilan)
                 }
             }
-        }.attach()
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 
     private fun logOut(view: View) {
@@ -99,5 +112,10 @@ class PengunjungDashboardFragment : Fragment() {
         )
         startActivity(intent)
         requireActivity().finish()
+    }
+
+    private fun bindingView(): View {
+        binding = FragmentPengelolaDashboardBinding.inflate(layoutInflater)
+        return binding.root
     }
 }

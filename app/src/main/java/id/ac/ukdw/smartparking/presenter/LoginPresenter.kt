@@ -6,6 +6,9 @@ import android.widget.Toast
 import id.ac.ukdw.smartparking.R
 import id.ac.ukdw.smartparking.api.RetrofitService
 import id.ac.ukdw.smartparking.extentions.UserSession
+import id.ac.ukdw.smartparking.extentions.UserSession.Companion.SHARED_PREFERENCE_PASSWORD_KEY
+import id.ac.ukdw.smartparking.extentions.UserSession.Companion.SHARED_PREFERENCE_ROLE_KEY
+import id.ac.ukdw.smartparking.extentions.UserSession.Companion.SHARED_PREFERENCE_USERNAME_KEY
 import id.ac.ukdw.smartparking.model.login.OnLoginSuccessResponse
 import id.ac.ukdw.smartparking.view.viewInterface.LoginInterface
 import retrofit2.Call
@@ -41,11 +44,14 @@ class LoginPresenter(private val activity: Activity, private val view: LoginInte
                     when(response.isSuccessful){
                         true -> {
                             if (response.body()?.status == 1){
+                                var data = response.body()?.data!!.get(0)!!
+                                var role = data.role!!
                                 saveSession(
                                     username,
-                                    password
+                                    password,
+                                    role
                                 )
-                                view.onLoginSuccess(activity.getString(R.string.login_sukses))
+                                view.onLoginSuccess(role)
                                 Toast.makeText(activity,"Pesan: ${response.body()?.message.toString()}", Toast.LENGTH_SHORT).show()
                             }
                         }
@@ -66,11 +72,13 @@ class LoginPresenter(private val activity: Activity, private val view: LoginInte
     //save user data to session
     private fun saveSession(
         username: String,
-        password: String
+        password: String,
+        role: String
     ) {
-        val adminSession = UserSession(activity)
-        adminSession.save(UserSession.SHARED_PREFERENCE_USERNAME_KEY,username)
-        adminSession.save(UserSession.SHARED_PREFERENCE_PASSWORD_KEY,password)
+        val userSession = UserSession(activity)
+        userSession.save(SHARED_PREFERENCE_USERNAME_KEY,username)
+        userSession.save(SHARED_PREFERENCE_PASSWORD_KEY,password)
+        userSession.save(SHARED_PREFERENCE_ROLE_KEY,role)
 //        view.onLoginSuccess(activity.getString(R.string.login_sukses))
     }
 
