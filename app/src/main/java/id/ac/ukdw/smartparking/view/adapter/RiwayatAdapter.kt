@@ -69,11 +69,9 @@ class RiwayatAdapter(private val listRiwayat: ArrayList<GetParkingSessionItem>):
         var detik = diff.split(":")[2]
         if (jam != "00"){
             durasi = "$jam jam"
-        }
-        if (menit != "00"){
+        }else if (menit != "00"){
             durasi = "$menit menit"
-        }
-        if (detik != "00"){
+        } else if (detik != "00"){
             durasi = "$detik detik"
         }
         return durasi

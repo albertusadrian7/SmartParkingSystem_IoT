@@ -5,6 +5,7 @@ import id.ac.ukdw.smartparking.model.login.OnLoginSuccessResponse
 import id.ac.ukdw.smartparking.model.parkir.GetParkingSessionItem
 import id.ac.ukdw.smartparking.model.parkir.OnGetParkingSessionByUserIdResponse
 import id.ac.ukdw.smartparking.model.pengunjung.CreatePengunjungResponse
+import id.ac.ukdw.smartparking.model.voucher.CreateVoucherResponse
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -43,55 +44,13 @@ interface Service {
         @Field("id_user") id_user: String
     ): Call<GetCardResponse>
 
-//    // Register Pengurus
-//    @FormUrlEncoded
-//    @POST("pengurus")
-//    fun signUpPengurus(
-//        @Field("kode_rt") kode_rt: String,
-//        @Field("nama") nama: String,
-//        @Field("email") email: String,
-//        @Field("password") password: String,
-//        @Field("no_hp") no_hp: String,
-//        @Field("gender") gender: String
-//    ): Call<CreatePengurusResponse>
-//
-//    // Login Pengurus
-//    @FormUrlEncoded
-//    @POST("pengurus/login")
-//    fun loginPengurus(
-//        @Field("email") email: String,
-//        @Field("password") password: String
-//    ): Call<OnLoginSuccessResponse>
-//
-//
-//    // Tambah Produk
-//    @FormUrlEncoded
-//    @POST("produk")
-//    fun tambahProduk(
-//        @Header("Authorization") authHeader: String,
-//        @Field("nama") nama: String,
-//        @Field("detail") detail: String,
-//        @Field("gambar") gambar: String,
-//        @Field("harga") harga: String,
-//    ): Call<CreateProductResponse>
-//
-//    // Edit Produk
-//    @FormUrlEncoded
-//    @PUT("produk/{product_id}")
-//    fun editProduk(
-//        @Header("Authorization") authHeader: String,
-//        @Path("product_id") product_id: String,
-//        @Field("nama") nama: String,
-//        @Field("detail") detail: String,
-//        @Field("gambar") gambar: String,
-//        @Field("harga") harga: String,
-//    ): Call<UpdateProductResponse>
-//
-//
-//    @DELETE("produk/{product_id}")
-//    fun deleteProduk(
-//        @Header("Authorization") authHeader: String,
-//        @Path("product_id") product_id: String,
-//    ): Call<DeleteProductResponse>
+    // Top Up Saldo - > Buat voucher
+    @FormUrlEncoded
+    @POST("voucherApi.php?function=create_voucher")
+    fun createVoucher(
+        @Field("id_voucher") id_voucher: String,
+        @Field("id_user") id_user: String,
+        @Field("nominal") nominal: String
+    ): Call<CreateVoucherResponse>
 
 }
