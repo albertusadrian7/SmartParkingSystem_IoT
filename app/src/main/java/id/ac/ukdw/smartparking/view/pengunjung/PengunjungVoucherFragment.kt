@@ -36,7 +36,8 @@ class PengunjungVoucherFragment : BottomSheetDialogFragment() {
     }
 
     private fun setKodeVoucher() {
-        binding.tvKodeVoucher.text = "XYZXYZYXZ"
+        val bundle = this.arguments
+        binding.tvKodeVoucher.text = bundle!!.getString("kode")
 
     }
 

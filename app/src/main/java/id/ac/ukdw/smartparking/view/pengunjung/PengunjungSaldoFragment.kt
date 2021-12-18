@@ -84,6 +84,7 @@ class PengunjungSaldoFragment : BottomSheetDialogFragment(),TopUpInterface {
         binding.btnSubmit.setOnClickListener {
             Toast.makeText(requireContext(),"Jumlah Top Up: $nominal",Toast.LENGTH_LONG).show()
             topUp(getIdUser(),nominal)
+            dialog!!.dismiss()
         }
     }
 

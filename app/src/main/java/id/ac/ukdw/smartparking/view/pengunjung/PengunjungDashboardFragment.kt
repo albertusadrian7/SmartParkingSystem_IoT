@@ -15,6 +15,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -57,7 +58,7 @@ class PengunjungDashboardFragment : Fragment(), KartuInterface {
     }
 
     private fun tabLayoutRiwayat(view: View) {
-        val listFragment: ArrayList<Fragment> = arrayListOf(PengunjungRiwayatParkirFragment(),PengunjungRiwayatSaldoFragment())
+        val listFragment: ArrayList<Fragment> = arrayListOf(PengunjungRiwayatParkirFragment(),PengunjungRiwayatTopUpFragment())
         val tabLayout = view.findViewById<TabLayout>(R.id.tabLayoutRiwayat)
         val viewPager = view.findViewById<ViewPager2>(R.id.viewPagerRiwayat)
         val riwayatViewPagerAdapter = RiwayatViewPagerAdapter(listFragment,this)
@@ -68,7 +69,7 @@ class PengunjungDashboardFragment : Fragment(), KartuInterface {
                     tab.text = "Parkir"
                 }
                 1->{
-                    tab.text = "Saldo"
+                    tab.text = "Top Up"
                 }
             }
         }.attach()
