@@ -45,6 +45,7 @@ class UserSession(activity: Activity) {
 
     companion object {
         const val SHARED_PREFERENCE_ID_KEY = "ID CODE"
+        const val SHARED_PREFERENCE_SALDO_KEY = "SALDO CODE"
         const val SHARED_PREFERENCE_USERNAME_KEY = "USERNAME CODE"
         const val SHARED_PREFERENCE_EMAIL_KEY = "EMAIL CODE"
         const val SHARED_PREFERENCE_PASSWORD_KEY = "PASSWORD CODE"

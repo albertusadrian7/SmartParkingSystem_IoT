@@ -1,5 +1,6 @@
 package id.ac.ukdw.smartparking.api
 
+import id.ac.ukdw.smartparking.model.kartu.GetCardResponse
 import id.ac.ukdw.smartparking.model.login.OnLoginSuccessResponse
 import id.ac.ukdw.smartparking.model.parkir.GetParkingSessionItem
 import id.ac.ukdw.smartparking.model.parkir.OnGetParkingSessionByUserIdResponse
@@ -34,6 +35,13 @@ interface Service {
     fun getHistory(
         @Field("id_user") id_user: String
     ): Call<OnGetParkingSessionByUserIdResponse>
+
+    // Get Kartu
+    @FormUrlEncoded
+    @POST("kartuApi.php?function=get_kartu_by_id")
+    fun getKartu(
+        @Field("id_user") id_user: String
+    ): Call<GetCardResponse>
 
 //    // Register Pengurus
 //    @FormUrlEncoded

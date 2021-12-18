@@ -5,7 +5,9 @@
       <map>
         <entry key="..\:/Duta Wacana/Semester 5/IoT/SmartParking/app/src/main/res/layout/activity_dashboard_pengurus.xml" value="0.264" />
         <entry key="..\:/Duta Wacana/Semester 5/IoT/SmartParking/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Duta Wacana/Semester 5/IoT/SmartParking/app/src/main/res/layout/fragment_pengunjung_dashboard.xml" value="0.13385416666666666" />
         <entry key="..\:/Duta Wacana/Semester 5/IoT/SmartParking/app/src/main/res/layout/fragment_pengunjung_parkir.xml" value="0.22780797101449277" />
+        <entry key="..\:/Duta Wacana/Semester 5/IoT/SmartParking/app/src/main/res/layout/fragment_pengunjung_saldo.xml" value="0.13385416666666666" />
         <entry key="..\:/Duta Wacana/Semester 5/IoT/SmartParking/app/src/main/res/layout/item_card_rfid.xml" value="0.22780797101449277" />
         <entry key="..\:/Duta Wacana/Semester 5/IoT/SmartParking/app/src/main/res/layout/item_card_riwayat.xml" value="0.6" />
         <entry key="..\:/Duta Wacana/Semester 5/IoT/SmartParking/app/src/main/res/layout/toolbar.xml" value="0.22780797101449277" />
