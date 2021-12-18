@@ -71,10 +71,15 @@ class PengelolaDashboardFragment : Fragment() {
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Get Post object and use the values to update the UI
-                val jumlahPengunjung = dataSnapshot.child("pemasukan/"+bulan+"/"+tanggal+"/pengunjung").getValue<Int>()
-                val jumlahPenghasilan = dataSnapshot.child("pemasukan/"+bulan+"/"+tanggal+"/total").getValue<Double>()
-                binding.tvJumlahPengunjung.text = jumlahPengunjung.toString()+" Orang"
-                binding.tvJumlahPenghasilan.text = rupiah(jumlahPenghasilan!!)+",-"
+                if(!dataSnapshot.child("pemasukan/"+bulan+"/"+tanggal).exists()) {
+                    database.child("pemasukan").child(bulan).child(tanggal).child("pengunjung").setValue(0)
+                    database.child("pemasukan").child(bulan).child(tanggal).child("total").setValue(0)
+                } else {
+                    val jumlahPengunjung = dataSnapshot.child("pemasukan/"+bulan+"/"+tanggal+"/pengunjung").getValue<Int>()
+                    val jumlahPenghasilan = dataSnapshot.child("pemasukan/"+bulan+"/"+tanggal+"/total").getValue<Double>()
+                    binding.tvJumlahPengunjung.text = jumlahPengunjung.toString()+" Orang"
+                    binding.tvJumlahPenghasilan.text = rupiah(jumlahPenghasilan!!)+",-"
+                }
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
