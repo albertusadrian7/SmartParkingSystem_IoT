@@ -14,11 +14,15 @@ import id.ac.ukdw.smartparking.databinding.FragmentPengunjungDashboardBinding
 import id.ac.ukdw.smartparking.view.adapter.RiwayatAdapter
 import id.ac.ukdw.smartparking.view.main.AuthActivity
 import android.R
+import android.util.Log
+import android.widget.Toast
+import id.ac.ukdw.smartparking.extentions.UserSession
+import id.ac.ukdw.smartparking.model.parkir.GetParkingSessionItem
+import id.ac.ukdw.smartparking.presenter.ListRiwayatPresenter
+import id.ac.ukdw.smartparking.view.viewInterface.RiwayatInterface
 
-
-
-
-class PengunjungDashboardFragment : Fragment() {
+private const val TAG = "ID USER"
+class PengunjungDashboardFragment : Fragment(),RiwayatInterface {
     private lateinit var binding: FragmentPengunjungDashboardBinding
     private lateinit var sharedPreferences: SharedPreferences
 
@@ -36,7 +40,16 @@ class PengunjungDashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setLightStatusBar(view)
-        setRecyclerView()
+        setRecyclerViewRiwayat()
+        getIdUser()
+        // Refresh Data Produk
+//        onStart()
+        ListRiwayatPresenter(requireActivity(), this).getHistoryPresenter(getIdUser())
+    }
+
+    override fun onStart() {
+        super.onStart()
+        ListRiwayatPresenter(requireActivity(), this).getHistoryPresenter(getIdUser())
     }
 
     fun setLightStatusBar(view: View) {
@@ -47,11 +60,11 @@ class PengunjungDashboardFragment : Fragment() {
         }
     }
 
-    private fun setRecyclerView() {
-        riwayatAdapter = RiwayatAdapter()
+    private fun setRecyclerViewRiwayat() {
         rvRiwayat = binding.rvRiwayat
         rvRiwayat.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL ,false)
-        rvRiwayat.setAdapter(riwayatAdapter)
+        riwayatAdapter = RiwayatAdapter(arrayListOf())
+        rvRiwayat.adapter = riwayatAdapter
     }
 
     private fun navigateToHomePage() {
@@ -67,6 +80,29 @@ class PengunjungDashboardFragment : Fragment() {
     private fun bindingView(): View {
         binding = FragmentPengunjungDashboardBinding.inflate(layoutInflater)
         return binding.root
+    }
+
+    override fun showDataRiwayat(riwayat: List<GetParkingSessionItem>) {
+        updateDataRiwayat(riwayat)
+    }
+
+    override fun updateDataRiwayat(riwayat: List<GetParkingSessionItem>) {
+        riwayatAdapter.setData(riwayat as ArrayList<GetParkingSessionItem>)
+    }
+
+    override fun resultSuccess(result: List<GetParkingSessionItem>) {
+        showDataRiwayat(result)
+    }
+
+    override fun resultFailed(t: Throwable) {
+        Toast.makeText(requireContext(),"Pesan: $t", Toast.LENGTH_LONG).show()
+    }
+
+    private fun getIdUser(): String {
+        val preferences = UserSession(requireActivity())
+        val idUser = preferences.getValueString(UserSession.SHARED_PREFERENCE_ID_KEY)
+        Log.d(TAG,idUser)
+        return idUser
     }
 
 }

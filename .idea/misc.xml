@@ -5,6 +5,10 @@
       <map>
         <entry key="..\:/Duta Wacana/Semester 5/IoT/SmartParking/app/src/main/res/layout/activity_dashboard_pengurus.xml" value="0.264" />
         <entry key="..\:/Duta Wacana/Semester 5/IoT/SmartParking/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Duta Wacana/Semester 5/IoT/SmartParking/app/src/main/res/layout/fragment_pengunjung_parkir.xml" value="0.22780797101449277" />
+        <entry key="..\:/Duta Wacana/Semester 5/IoT/SmartParking/app/src/main/res/layout/item_card_rfid.xml" value="0.22780797101449277" />
+        <entry key="..\:/Duta Wacana/Semester 5/IoT/SmartParking/app/src/main/res/layout/item_card_riwayat.xml" value="0.6" />
+        <entry key="..\:/Duta Wacana/Semester 5/IoT/SmartParking/app/src/main/res/layout/toolbar.xml" value="0.22780797101449277" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/drawable-v24/rounded_10.xml" value="0.26614583333333336" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/drawable-v24/rounded_button_auth.xml" value="0.14322916666666666" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/drawable-v24/rounded_form_white.xml" value="0.26614583333333336" />
