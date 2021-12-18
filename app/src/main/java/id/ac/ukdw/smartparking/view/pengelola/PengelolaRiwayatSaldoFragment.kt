@@ -35,7 +35,7 @@ class PengelolaRiwayatSaldoFragment : Fragment() {
     }
 
     private fun setRecyclerView() {
-        riwayatAdapter = RiwayatAdapter()
+        riwayatAdapter = RiwayatAdapter(arrayListOf())
         rvRiwayat = binding.rvRiwayatSaldo
         rvRiwayat.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL ,false)
         rvRiwayat.setAdapter(riwayatAdapter)

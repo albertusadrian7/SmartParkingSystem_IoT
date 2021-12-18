@@ -42,7 +42,7 @@ class PengelolaRiwayatParkirFragment : Fragment() {
     }
 
     private fun setRecyclerView() {
-        riwayatAdapter = RiwayatAdapter()
+        riwayatAdapter = RiwayatAdapter(arrayListOf())
         rvRiwayat = binding.rvRiwayatParkir
         rvRiwayat.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL ,false)
         rvRiwayat.setAdapter(riwayatAdapter)
