@@ -10,6 +10,7 @@
     android:id="@+id/toolbar">
 
     <ImageView
+        android:id="@+id/btnNotif"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_icon_bell"
@@ -26,11 +27,11 @@
         android:textColor="@color/black" />
 
     <ImageView
+        android:id="@+id/btnProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:src="@drawable/ic_toolbar_icon_user"
-        app:tint="@color/black"
-        />
+        android:src="@drawable/ic_icon_signout"
+        app:tint="@color/black" />
 
 </RelativeLayout>

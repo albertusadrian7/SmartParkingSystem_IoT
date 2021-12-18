@@ -9,12 +9,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import id.ac.ukdw.smartparking.R
 import id.ac.ukdw.smartparking.databinding.FragmentSplashScreenBinding
+import id.ac.ukdw.smartparking.extentions.UserSession
+import id.ac.ukdw.smartparking.extentions.UserSession.Companion.SHARED_PREFERENCE_PASSWORD_KEY
+import id.ac.ukdw.smartparking.extentions.UserSession.Companion.SHARED_PREFERENCE_ROLE_KEY
+import id.ac.ukdw.smartparking.extentions.UserSession.Companion.SHARED_PREFERENCE_USERNAME_KEY
+import id.ac.ukdw.smartparking.view.main.PengelolaDashboardActivity
+import id.ac.ukdw.smartparking.view.main.PengunjungDashboardActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenFragment : Fragment() {
     private lateinit var binding: FragmentSplashScreenBinding
+    private var isLogin: Boolean = false
+    private var username: String = ""
+    private var password: String = ""
+    private var role: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,14 +33,23 @@ class SplashScreenFragment : Fragment() {
         return bindView()
     }
 
-    override fun onStart() {
-        super.onStart()
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        checkSessions()
+        navigateToDashboard()
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        Thread.sleep(3000)
-        navigateToDashboard()
+    private fun checkSessions() {
+        val preferences = UserSession(requireActivity())
+        username = preferences
+            .getValueString(SHARED_PREFERENCE_USERNAME_KEY)
+        if (!username.isNullOrEmpty()){
+            isLogin = true
+        }
+        if(isLogin){
+            role = preferences.getValueString(SHARED_PREFERENCE_ROLE_KEY)
+            password = preferences
+                .getValueString(SHARED_PREFERENCE_PASSWORD_KEY)
+        }
     }
 
     private fun bindView(): View {
@@ -40,9 +58,24 @@ class SplashScreenFragment : Fragment() {
     }
 
     private fun navigateToDashboard() {
+        if(isLogin){
+            if (role == "pengelola"){
+                Handler().postDelayed({
+                    val intent = Intent(requireActivity(), PengelolaDashboardActivity::class.java)
+                    startActivity(intent)
+                    requireActivity().finish()
+                },3000)
+            } else if(role == "pengunjung"){
+                Handler().postDelayed({
+                    val intent = Intent(requireActivity(), PengunjungDashboardActivity::class.java)
+                    startActivity(intent)
+                    requireActivity().finish()
+                },3000)
+            }
+        } else {
             val direction = SplashScreenFragmentDirections
                 .actionSplashScreenFragmentToLoginFragment()
-        Handler().postDelayed({findNavController().navigate(direction)}, 4000)
-
+            Handler().postDelayed({findNavController().navigate(direction)}, 3000)
+        }
     }
 }

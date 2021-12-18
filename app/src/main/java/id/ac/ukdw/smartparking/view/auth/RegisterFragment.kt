@@ -6,18 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import androidx.navigation.fragment.findNavController
 import android.os.Build
 import android.util.Log
-import android.widget.AdapterView
-import android.widget.AutoCompleteTextView
 import android.widget.Toast
-import id.ac.ukdw.smartparking.R
 import id.ac.ukdw.smartparking.databinding.FragmentRegisterBinding
 import id.ac.ukdw.smartparking.extentions.UserValidator
 import id.ac.ukdw.smartparking.presenter.RegisterPresenter
-import id.ac.ukdw.smartparking.view.main.DashboardActivity
+import id.ac.ukdw.smartparking.view.main.PengunjungDashboardActivity
 import id.ac.ukdw.smartparking.view.viewInterface.RegisterInterface
 
 
@@ -264,7 +260,7 @@ class RegisterFragment : Fragment(), RegisterInterface {
         Thread.sleep(1000)
         val intent = Intent(
             requireActivity(),
-            DashboardActivity::class.java
+            PengunjungDashboardActivity::class.java
         )
         startActivity(intent)
         requireActivity().finish()

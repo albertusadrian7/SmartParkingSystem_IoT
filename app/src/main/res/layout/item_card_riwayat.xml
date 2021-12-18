@@ -7,7 +7,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     card_view:cardElevation="0dp"
-    android:layout_marginBottom="@dimen/_24sdp">
+    android:layout_marginVertical="@dimen/_12sdp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

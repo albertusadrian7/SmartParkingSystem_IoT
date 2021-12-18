@@ -7,33 +7,22 @@
     android:layout_height="wrap_content"
     android:background="@drawable/rounded_top_30">
 
-    <EditText
-        android:id="@+id/etJumlahTopUp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/black"
-        android:inputType="number"
-        android:hint="Jumlah Top Up"
-        />
-
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnSubmit"
+        android:id="@+id/btnKeluar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/rounded_button_auth"
         android:fontFamily="@font/poppins_semibold"
-        android:hint="Top Up"
+        android:hint="Keluar"
         android:textColorHint="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etJumlahTopUp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

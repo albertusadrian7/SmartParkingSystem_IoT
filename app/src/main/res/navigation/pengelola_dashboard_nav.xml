@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dashboard_nav"
+    app:startDestination="@id/dashboardFragment">
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="id.ac.ukdw.smartparking.view.pengelola.PengelolaDashboardFragment"
+        android:label="PengelolaDashboardFragment"
+        tools:layout="@layout/fragment_pengelola_dashboard"/>
+    <fragment
+        android:id="@+id/kartuFragment"
+        android:name="id.ac.ukdw.smartparking.view.pengelola.PengelolaKartuFragment"
+        android:label="PengelolaKartuFragment"
+        tools:layout="@layout/fragment_pengelola_kartu"/>
+    <fragment
+        android:id="@+id/parkirFragment"
+        android:name="id.ac.ukdw.smartparking.view.pengelola.PengelolaParkirFragment"
+        android:label="PengelolaParkirFragment"
+        tools:layout="@layout/fragment_pengelola_parkir"/>
+</navigation>

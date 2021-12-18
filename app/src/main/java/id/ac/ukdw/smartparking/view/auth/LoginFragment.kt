@@ -4,19 +4,16 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import id.ac.ukdw.smartparking.databinding.FragmentLoginBinding
-import id.ac.ukdw.smartparking.extentions.UserValidator
 import id.ac.ukdw.smartparking.presenter.LoginPresenter
 import id.ac.ukdw.smartparking.view.main.AuthActivity
-import id.ac.ukdw.smartparking.view.main.DashboardActivity
+import id.ac.ukdw.smartparking.view.main.PengunjungDashboardActivity
 import id.ac.ukdw.smartparking.view.viewInterface.LoginInterface
 
 class LoginFragment : Fragment(), LoginInterface {
@@ -55,16 +52,6 @@ class LoginFragment : Fragment(), LoginInterface {
     }
 
     private fun navigateToDashboard() {
-        Thread.sleep(1000)
-        val intent = Intent(
-            requireActivity(),
-            DashboardActivity::class.java
-        )
-        startActivity(intent)
-        requireActivity().finish()
-    }
-
-    private fun navigateToHomePage() {
         Thread.sleep(1000)
         val intent = Intent(
             requireActivity(),

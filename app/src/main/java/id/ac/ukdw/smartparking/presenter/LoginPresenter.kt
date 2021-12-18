@@ -3,10 +3,13 @@ package id.ac.ukdw.smartparking.presenter
 import android.app.Activity
 import android.util.Log
 import android.widget.Toast
-import com.google.firebase.firestore.auth.User
 import id.ac.ukdw.smartparking.R
 import id.ac.ukdw.smartparking.api.RetrofitService
 import id.ac.ukdw.smartparking.extentions.UserSession
+import id.ac.ukdw.smartparking.extentions.UserSession.Companion.SHARED_PREFERENCE_ID_KEY
+import id.ac.ukdw.smartparking.extentions.UserSession.Companion.SHARED_PREFERENCE_PASSWORD_KEY
+import id.ac.ukdw.smartparking.extentions.UserSession.Companion.SHARED_PREFERENCE_ROLE_KEY
+import id.ac.ukdw.smartparking.extentions.UserSession.Companion.SHARED_PREFERENCE_USERNAME_KEY
 import id.ac.ukdw.smartparking.model.login.OnLoginSuccessResponse
 import id.ac.ukdw.smartparking.view.viewInterface.LoginInterface
 import retrofit2.Call
@@ -42,12 +45,16 @@ class LoginPresenter(private val activity: Activity, private val view: LoginInte
                     when(response.isSuccessful){
                         true -> {
                             if (response.body()?.status == 1){
+                                var data = response.body()?.data!!.get(0)!!
+                                var role = data.role!!
+                                var idUser = data.idUser!!
                                 saveSession(
-                                    response.body()?.data?.get(0)?.idUser.toString(),
+                                    idUser,
                                     username,
-                                    password
+                                    password,
+                                    role
                                 )
-                                view.onLoginSuccess(activity.getString(R.string.login_sukses))
+                                view.onLoginSuccess(role)
                                 Toast.makeText(activity,"Pesan: ${response.body()?.message.toString()}", Toast.LENGTH_SHORT).show()
                             }
                         }
@@ -69,12 +76,14 @@ class LoginPresenter(private val activity: Activity, private val view: LoginInte
     private fun saveSession(
         idUser: String,
         username: String,
-        password: String
+        password: String,
+        role: String
     ) {
-        val adminSession = UserSession(activity)
-        adminSession.save(UserSession.SHARED_PREFERENCE_ID_KEY,idUser)
-        adminSession.save(UserSession.SHARED_PREFERENCE_USERNAME_KEY,username)
-        adminSession.save(UserSession.SHARED_PREFERENCE_PASSWORD_KEY,password)
+        val userSession = UserSession(activity)
+        userSession.save(SHARED_PREFERENCE_USERNAME_KEY,username)
+        userSession.save(SHARED_PREFERENCE_PASSWORD_KEY,password)
+        userSession.save(SHARED_PREFERENCE_ROLE_KEY,role)
+        userSession.save(SHARED_PREFERENCE_ID_KEY,idUser)
 //        view.onLoginSuccess(activity.getString(R.string.login_sukses))
     }
 
