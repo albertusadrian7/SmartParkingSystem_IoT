@@ -1,4 +1,4 @@
-package id.ac.ukdw.smartparking.view.pengelola
+package id.ac.ukdw.smartparking.view.pengunjung
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -15,7 +15,7 @@ import id.ac.ukdw.smartparking.databinding.FragmentPengunjungRiwayatSaldoBinding
 import id.ac.ukdw.smartparking.view.adapter.RiwayatSaldoAdapter
 
 
-class PengelolaRiwayatSaldoFragment : Fragment() {
+class PengunjungRiwayatSaldoFragment : Fragment() {
     private lateinit var binding: FragmentPengunjungRiwayatSaldoBinding
     private lateinit var sharedPreferences: SharedPreferences
 

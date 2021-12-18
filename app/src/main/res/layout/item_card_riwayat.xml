@@ -5,6 +5,7 @@
     android:layout_height="@dimen/_30sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cvRiwayat"
     android:layout_gravity="center"
     card_view:cardElevation="0dp"
     android:layout_marginVertical="@dimen/_12sdp">

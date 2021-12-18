@@ -32,13 +32,14 @@
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_pengelola_riwayat_parkir.xml" value="0.25" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_pengelola_riwayat_saldo.xml" value="0.25" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_pengelola_saldo.xml" value="0.25" />
-        <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_pengunjung_dashboard.xml" value="0.2" />
+        <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_pengunjung_dashboard.xml" value="0.264" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_pengunjung_parkir.xml" value="0.176" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_pengunjung_profile.xml" value="0.25" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_pengunjung_riwayat_parkir.xml" value="0.25" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_pengunjung_riwayat_saldo.xml" value="0.25" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_pengunjung_saldo.xml" value="0.264" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_pengunjung_test.xml" value="0.264" />
+        <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_pengunjung_voucher.xml" value="0.264" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_pengurus_market.xml" value="0.12708333333333333" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_pengurus_news.xml" value="0.12708333333333333" />
         <entry key="..\:/Workspace/AndroidStudio/SmartParkingSystem_IoT/app/src/main/res/layout/fragment_register.xml" value="0.3096446700507614" />

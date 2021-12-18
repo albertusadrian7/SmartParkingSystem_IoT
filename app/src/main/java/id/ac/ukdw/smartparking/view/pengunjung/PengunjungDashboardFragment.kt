@@ -3,6 +3,7 @@ package id.ac.ukdw.smartparking.view.pengunjung
 import android.content.ContentValues
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -10,9 +11,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
@@ -54,7 +57,7 @@ class PengunjungDashboardFragment : Fragment(), KartuInterface {
     }
 
     private fun tabLayoutRiwayat(view: View) {
-        val listFragment: ArrayList<Fragment> = arrayListOf(PengunjungRiwayatParkirFragment(),PengunjungRiwayatTopUpFragment())
+        val listFragment: ArrayList<Fragment> = arrayListOf(PengunjungRiwayatParkirFragment(),PengunjungRiwayatSaldoFragment())
         val tabLayout = view.findViewById<TabLayout>(R.id.tabLayoutRiwayat)
         val viewPager = view.findViewById<ViewPager2>(R.id.viewPagerRiwayat)
         val riwayatViewPagerAdapter = RiwayatViewPagerAdapter(listFragment,this)
@@ -89,15 +92,6 @@ class PengunjungDashboardFragment : Fragment(), KartuInterface {
         }
     }
 
-//    private fun profile(view: View) {
-//        val btnProfile = view.findViewById<ImageView>(R.id.btnProfile)
-//        btnProfile.setOnClickListener {
-//            var bottomFragment = PengunjungProfileFragment()
-//            bottomFragment.setStyle(DialogFragment.STYLE_NORMAL, Color.TRANSPARENT)
-//            bottomFragment.show(getParentFragmentManager(), "TAG")
-//        }
-//    }
-
     fun setLightStatusBar(view: View) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             var flags = view.systemUiVisibility
@@ -123,11 +117,14 @@ class PengunjungDashboardFragment : Fragment(), KartuInterface {
     }
 
     override fun resultCardSuccess(kartu: List<GetKartuItem>, view: View) {
-        val tvIdKartu = view.findViewById<TextView>(R.id.tvIdKartu)
-        tvIdKartu.text = kartu[0].cardUid.toString()
-        val tvJumlahSaldo = view.findViewById<TextView>(R.id.tvJumlahSaldo)
-        tvJumlahSaldo.text = kartu[0].saldo?.let { rupiah(it.toDouble()) }
-    }
+        if(!kartu[0].cardUid.isNullOrEmpty()) {
+            val gaPunyaKartu = view.findViewById<ConstraintLayout>(R.id.gaPunyaKartu)
+            gaPunyaKartu.visibility = View.GONE
+            val tvIdKartu = view.findViewById<TextView>(R.id.tvIdKartu)
+            tvIdKartu.text = kartu[0].cardUid.toString()
+            val tvJumlahSaldo = view.findViewById<TextView>(R.id.tvJumlahSaldo)
+            tvJumlahSaldo.text = kartu[0].saldo?.let { rupiah(it.toDouble()) }
+        }
 
     override fun resultCardFailed(t: Throwable) {
         Toast.makeText(requireContext(),"Pesan: $t", Toast.LENGTH_LONG).show()
