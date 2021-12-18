@@ -3,6 +3,7 @@ package id.ac.ukdw.smartparking.presenter
 import android.app.Activity
 import android.util.Log
 import android.widget.Toast
+import com.google.firebase.firestore.auth.User
 import id.ac.ukdw.smartparking.R
 import id.ac.ukdw.smartparking.api.RetrofitService
 import id.ac.ukdw.smartparking.extentions.UserSession
@@ -42,6 +43,7 @@ class LoginPresenter(private val activity: Activity, private val view: LoginInte
                         true -> {
                             if (response.body()?.status == 1){
                                 saveSession(
+                                    response.body()?.data?.get(0)?.idUser.toString(),
                                     username,
                                     password
                                 )
@@ -65,10 +67,12 @@ class LoginPresenter(private val activity: Activity, private val view: LoginInte
 
     //save user data to session
     private fun saveSession(
+        idUser: String,
         username: String,
         password: String
     ) {
         val adminSession = UserSession(activity)
+        adminSession.save(UserSession.SHARED_PREFERENCE_ID_KEY,idUser)
         adminSession.save(UserSession.SHARED_PREFERENCE_USERNAME_KEY,username)
         adminSession.save(UserSession.SHARED_PREFERENCE_PASSWORD_KEY,password)
 //        view.onLoginSuccess(activity.getString(R.string.login_sukses))

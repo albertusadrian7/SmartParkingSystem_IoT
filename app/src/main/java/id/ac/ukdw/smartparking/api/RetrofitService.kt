@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitService {
-    private const val baseUrl = "http://192.168.100.6/smart-parking-rest-api/"
+    private const val baseUrl = "http://192.168.100.130/smart-parking-rest-api/"
 
     private fun getInterceptor(): OkHttpClient {
         val logging = HttpLoggingInterceptor()

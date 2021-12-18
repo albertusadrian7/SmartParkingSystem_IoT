@@ -1,6 +1,9 @@
 package id.ac.ukdw.smartparking.api
 
+import id.ac.ukdw.smartparking.model.kartu.GetCardResponse
 import id.ac.ukdw.smartparking.model.login.OnLoginSuccessResponse
+import id.ac.ukdw.smartparking.model.parkir.GetParkingSessionItem
+import id.ac.ukdw.smartparking.model.parkir.OnGetParkingSessionByUserIdResponse
 import id.ac.ukdw.smartparking.model.pengunjung.CreatePengunjungResponse
 import retrofit2.Call
 import retrofit2.http.*
@@ -26,6 +29,20 @@ interface Service {
         @Field("password") password: String
     ): Call<OnLoginSuccessResponse>
 
+    // Get Parking Session
+    @FormUrlEncoded
+    @POST("parkirApi.php?function=get_parking_session_by_user_id")
+    fun getHistory(
+        @Field("id_user") id_user: String
+    ): Call<OnGetParkingSessionByUserIdResponse>
+
+    // Get Kartu
+    @FormUrlEncoded
+    @POST("kartuApi.php?function=get_kartu_by_id")
+    fun getKartu(
+        @Field("id_user") id_user: String
+    ): Call<GetCardResponse>
+
 //    // Register Pengurus
 //    @FormUrlEncoded
 //    @POST("pengurus")
@@ -46,11 +63,6 @@ interface Service {
 //        @Field("password") password: String
 //    ): Call<OnLoginSuccessResponse>
 //
-//    // Get Produk Warga yang Login
-//    @GET("produk/keluarga")
-//    fun getProdukByLogin(
-//        @Header("Authorization") authHeader: String
-//    ): Call<GetAllProductFamilyResponse>
 //
 //    // Tambah Produk
 //    @FormUrlEncoded
