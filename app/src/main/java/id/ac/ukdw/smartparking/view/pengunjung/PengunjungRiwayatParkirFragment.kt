@@ -64,7 +64,7 @@ class PengunjungRiwayatParkirFragment : Fragment(), RiwayatInterface {
         riwayatAdapter = RiwayatAdapter(arrayListOf())
         rvRiwayat = binding.rvRiwayatParkir
         rvRiwayat.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL ,false)
-        rvRiwayat.setAdapter(riwayatAdapter)
+        rvRiwayat.adapter = riwayatAdapter
     }
 
 
@@ -87,12 +87,6 @@ class PengunjungRiwayatParkirFragment : Fragment(), RiwayatInterface {
 
     override fun resultFailed(t: Throwable) {
         Toast.makeText(requireContext(),"Pesan: $t", Toast.LENGTH_LONG).show()
-    }
-
-    private fun rupiah(number: Double): String{
-        val localeID =  Locale("in", "ID")
-        val numberFormat = NumberFormat.getCurrencyInstance(localeID)
-        return numberFormat.format(number).toString()
     }
 
 }
