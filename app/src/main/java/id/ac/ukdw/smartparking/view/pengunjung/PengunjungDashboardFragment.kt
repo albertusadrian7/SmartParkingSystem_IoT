@@ -15,6 +15,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -92,15 +93,6 @@ class PengunjungDashboardFragment : Fragment(), KartuInterface {
         }
     }
 
-//    private fun profile(view: View) {
-//        val btnProfile = view.findViewById<ImageView>(R.id.btnProfile)
-//        btnProfile.setOnClickListener {
-//            var bottomFragment = PengunjungProfileFragment()
-//            bottomFragment.setStyle(DialogFragment.STYLE_NORMAL, Color.TRANSPARENT)
-//            bottomFragment.show(getParentFragmentManager(), "TAG")
-//        }
-//    }
-
     fun setLightStatusBar(view: View) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             var flags = view.systemUiVisibility
@@ -126,10 +118,15 @@ class PengunjungDashboardFragment : Fragment(), KartuInterface {
     }
 
     override fun resultCardSuccess(kartu: List<GetKartuItem>, view: View) {
-        val tvIdKartu = view.findViewById<TextView>(R.id.tvIdKartu)
-        tvIdKartu.text = kartu[0].cardUid.toString()
-        val tvJumlahSaldo = view.findViewById<TextView>(R.id.tvJumlahSaldo)
-        tvJumlahSaldo.text = kartu[0].saldo?.let { rupiah(it.toDouble()) }
+        if(!kartu[0].cardUid.isNullOrEmpty()) {
+            val gaPunyaKartu = view.findViewById<ConstraintLayout>(R.id.gaPunyaKartu)
+            gaPunyaKartu.visibility = View.GONE
+            val tvIdKartu = view.findViewById<TextView>(R.id.tvIdKartu)
+            tvIdKartu.text = kartu[0].cardUid.toString()
+            val tvJumlahSaldo = view.findViewById<TextView>(R.id.tvJumlahSaldo)
+            tvJumlahSaldo.text = kartu[0].saldo?.let { rupiah(it.toDouble()) }
+        }
+
     }
 
     override fun resultCardFailed(t: Throwable) {

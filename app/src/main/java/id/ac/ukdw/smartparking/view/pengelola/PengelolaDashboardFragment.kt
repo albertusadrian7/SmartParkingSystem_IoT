@@ -1,23 +1,35 @@
 package id.ac.ukdw.smartparking.view.pengelola
 
+import android.content.ContentValues
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
+import com.google.firebase.ktx.Firebase
 import id.ac.ukdw.smartparking.R
 import id.ac.ukdw.smartparking.databinding.FragmentPengelolaDashboardBinding
 import id.ac.ukdw.smartparking.extentions.UserSession
 import id.ac.ukdw.smartparking.view.adapter.Penghasilan
 import id.ac.ukdw.smartparking.view.adapter.RiwayatPenghasilanHarianAdapter
 import id.ac.ukdw.smartparking.view.main.AuthActivity
+import java.text.NumberFormat
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class PengelolaDashboardFragment : Fragment() {
@@ -42,7 +54,35 @@ class PengelolaDashboardFragment : Fragment() {
         setLightStatusBar(view)
         setRecyclerView()
         logOut(view)
+        setCardDashboard()
 //        profile(view)
+    }
+
+    private fun setCardDashboard() {
+        database = Firebase.database.reference
+
+        var date = Date()
+        val formatBulan = SimpleDateFormat("MMMM")
+        val bulan: String = formatBulan.format(date)
+        val formatTanggal = SimpleDateFormat("dd")
+        val tanggal: String = formatTanggal.format(date)
+//        Toast.makeText(requireContext(), bulan+" "+tanggal, Toast.LENGTH_LONG).show()
+
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Get Post object and use the values to update the UI
+                val jumlahPengunjung = dataSnapshot.child("pemasukan/"+bulan+"/"+tanggal+"/pengunjung").getValue<Int>()
+                val jumlahPenghasilan = dataSnapshot.child("pemasukan/"+bulan+"/"+tanggal+"/total").getValue<Double>()
+                binding.tvJumlahPengunjung.text = jumlahPengunjung.toString()+" Orang"
+                binding.tvJumlahPenghasilan.text = rupiah(jumlahPenghasilan!!)+",-"
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+                Log.w(ContentValues.TAG, "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+        database.addValueEventListener(postListener)
     }
 
     private fun setRecyclerView() {
@@ -56,7 +96,7 @@ class PengelolaDashboardFragment : Fragment() {
     }
 
     private fun getDataPenghasilan() {
-        database = FirebaseDatabase.getInstance().getReference("pemasukan/desember")
+        database = FirebaseDatabase.getInstance().getReference("pemasukan/December")
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 listPenghasilan.clear()
@@ -87,14 +127,11 @@ class PengelolaDashboardFragment : Fragment() {
         }
     }
 
-//    private fun profile(view: View) {
-//        val btnProfile = view.findViewById<ImageView>(R.id.btnProfile)
-//        btnProfile.setOnClickListener {
-//            var bottomFragment = PengunjungProfileFragment()
-//            bottomFragment.setStyle(DialogFragment.STYLE_NORMAL, Color.TRANSPARENT)
-//            bottomFragment.show(getParentFragmentManager(), "TAG")
-//        }
-//    }
+    private fun rupiah(number: Double): String{
+        val localeID =  Locale("in", "ID")
+        val numberFormat = NumberFormat.getCurrencyInstance(localeID)
+        return numberFormat.format(number).toString()
+    }
 
     fun setLightStatusBar(view: View) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

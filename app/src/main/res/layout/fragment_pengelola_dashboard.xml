@@ -21,12 +21,62 @@
         android:id="@+id/cvKartu"
         android:layout_margin="@dimen/_24sdp"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_150sdp"
+        android:layout_height="@dimen/_70sdp"
         app:layout_constraintVertical_bias="1.0"
         android:layout_gravity="center"
         app:cardCornerRadius="@dimen/_16sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toTopOf="@id/cvPengunjung"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/primary_green"
+            android:padding="@dimen/_16sdp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:text="Penghasilan"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvJumlahPenghasilan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Rp500.000,-"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvPengunjung"
+        android:layout_marginHorizontal="@dimen/_24sdp"
+        android:layout_marginBottom="@dimen/_24sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_70sdp"
+        app:layout_constraintVertical_bias="1.0"
+        android:layout_gravity="center"
+        app:cardCornerRadius="@dimen/_16sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cvKartu"
         app:layout_constraintBottom_toTopOf="@id/body"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -38,49 +88,27 @@
             >
 
             <TextView
-                android:id="@+id/tvIdKartu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="**** **** **** 4567"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:textColor="@color/white"
-                android:fontFamily="@font/poppins_medium"
-                android:textSize="@dimen/_10ssp"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:text="SmartParking"
-                android:fontFamily="@font/poppins_bold"
-                android:textSize="@dimen/_12ssp"
-                android:textColor="@color/white"
-                />
-
-            <TextView
-                android:id="@+id/tvSaldo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Saldo"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/tvJumlahSaldo"
-                android:textColor="@color/white"
                 android:fontFamily="@font/poppins"
-                android:textSize="@dimen/_12ssp"/>
+                android:text="Pengunjung"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tvJumlahSaldo"
+                android:id="@+id/tvJumlahPengunjung"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rp5.000,-"
+                android:fontFamily="@font/poppins_bold"
+                android:text="50 Orang"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18ssp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:textColor="@color/white"
-                android:fontFamily="@font/poppins_bold"
-                android:textSize="@dimen/_18ssp"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
 
 
@@ -98,7 +126,7 @@
         android:paddingHorizontal="@dimen/_24sdp"
         android:paddingTop="@dimen/_24sdp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cvKartu"
+        app:layout_constraintTop_toBottomOf="@id/cvPengunjung"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 

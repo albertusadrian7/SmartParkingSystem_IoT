@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import id.ac.ukdw.smartparking.view.adapter.RiwayatAdapter
 import id.ac.ukdw.smartparking.databinding.FragmentPengunjungRiwayatSaldoBinding
+import id.ac.ukdw.smartparking.view.adapter.RiwayatSaldoAdapter
 
 
 class PengelolaRiwayatSaldoFragment : Fragment() {
@@ -19,7 +20,7 @@ class PengelolaRiwayatSaldoFragment : Fragment() {
     private lateinit var sharedPreferences: SharedPreferences
 
     private lateinit var rvRiwayat: RecyclerView
-    private lateinit var riwayatAdapter: RiwayatAdapter
+    private lateinit var riwayatAdapter: RiwayatSaldoAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +36,7 @@ class PengelolaRiwayatSaldoFragment : Fragment() {
     }
 
     private fun setRecyclerView() {
-        riwayatAdapter = RiwayatAdapter(arrayListOf())
+        riwayatAdapter = RiwayatSaldoAdapter()
         rvRiwayat = binding.rvRiwayatSaldo
         rvRiwayat.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL ,false)
         rvRiwayat.setAdapter(riwayatAdapter)
