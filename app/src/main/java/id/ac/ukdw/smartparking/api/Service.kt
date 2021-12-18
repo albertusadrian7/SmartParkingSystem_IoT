@@ -2,10 +2,10 @@ package id.ac.ukdw.smartparking.api
 
 import id.ac.ukdw.smartparking.model.kartu.GetCardResponse
 import id.ac.ukdw.smartparking.model.login.OnLoginSuccessResponse
-import id.ac.ukdw.smartparking.model.parkir.GetParkingSessionItem
 import id.ac.ukdw.smartparking.model.parkir.OnGetParkingSessionByUserIdResponse
 import id.ac.ukdw.smartparking.model.pengunjung.CreatePengunjungResponse
 import id.ac.ukdw.smartparking.model.voucher.CreateVoucherResponse
+import id.ac.ukdw.smartparking.model.voucher.GetVoucherResponse
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -52,5 +52,12 @@ interface Service {
         @Field("id_user") id_user: String,
         @Field("nominal") nominal: String
     ): Call<CreateVoucherResponse>
+
+    // Get Top Up History
+    @FormUrlEncoded
+    @POST("voucherApi.php?function=get_voucher_by_id")
+    fun getTopUpHistory(
+        @Field("id_user") id_user: String
+    ): Call<GetVoucherResponse>
 
 }
