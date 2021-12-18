@@ -117,7 +117,7 @@ class PengunjungDashboardFragment : Fragment(), KartuInterface {
     }
 
     override fun resultCardSuccess(kartu: List<GetKartuItem>, view: View) {
-        if(!kartu[0].cardUid.isNullOrEmpty()) {
+        if (!kartu[0].cardUid.isNullOrEmpty()) {
             val gaPunyaKartu = view.findViewById<ConstraintLayout>(R.id.gaPunyaKartu)
             gaPunyaKartu.visibility = View.GONE
             val tvIdKartu = view.findViewById<TextView>(R.id.tvIdKartu)
@@ -125,6 +125,7 @@ class PengunjungDashboardFragment : Fragment(), KartuInterface {
             val tvJumlahSaldo = view.findViewById<TextView>(R.id.tvJumlahSaldo)
             tvJumlahSaldo.text = kartu[0].saldo?.let { rupiah(it.toDouble()) }
         }
+    }
 
     override fun resultCardFailed(t: Throwable) {
         Toast.makeText(requireContext(),"Pesan: $t", Toast.LENGTH_LONG).show()
