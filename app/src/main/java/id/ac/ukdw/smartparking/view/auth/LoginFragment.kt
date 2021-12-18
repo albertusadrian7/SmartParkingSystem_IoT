@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +12,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import id.ac.ukdw.smartparking.databinding.FragmentLoginBinding
+import id.ac.ukdw.smartparking.extentions.UserSession
 import id.ac.ukdw.smartparking.presenter.LoginPresenter
 import id.ac.ukdw.smartparking.view.main.AuthActivity
+import id.ac.ukdw.smartparking.view.main.PengelolaDashboardActivity
 import id.ac.ukdw.smartparking.view.main.PengunjungDashboardActivity
 import id.ac.ukdw.smartparking.view.viewInterface.LoginInterface
 
@@ -21,6 +24,8 @@ class LoginFragment : Fragment(), LoginInterface {
     private var username: String = ""
     private var password: String = ""
     private lateinit var sharedPreferences: SharedPreferences
+
+    private var role: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,13 +57,21 @@ class LoginFragment : Fragment(), LoginInterface {
     }
 
     private fun navigateToDashboard() {
-        Thread.sleep(1000)
-        val intent = Intent(
-            requireActivity(),
-            AuthActivity::class.java
-        )
-        startActivity(intent)
-        requireActivity().finish()
+        val preferences = UserSession(requireActivity())
+        role = preferences.getValueString(UserSession.SHARED_PREFERENCE_ROLE_KEY)
+        if (role == "pengelola"){
+            Handler().postDelayed({
+                val intent = Intent(requireActivity(), PengelolaDashboardActivity::class.java)
+                startActivity(intent)
+                requireActivity().finish()
+            },0)
+        } else if(role == "pengunjung"){
+            Handler().postDelayed({
+                val intent = Intent(requireActivity(), PengunjungDashboardActivity::class.java)
+                startActivity(intent)
+                requireActivity().finish()
+            },0)
+        }
     }
 
     private fun submitForm(){
