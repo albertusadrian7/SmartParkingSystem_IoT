@@ -51,33 +51,33 @@ class PengunjungParkirFragment : Fragment() {
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Get Post object and use the values to update the UI
-                val slotA = dataSnapshot.child("parkiran/A").getValue<Boolean>()
-                val slotB = dataSnapshot.child("parkiran/B").getValue<Boolean>()
-                val slotC = dataSnapshot.child("parkiran/C").getValue<Boolean>()
-                val slotD = dataSnapshot.child("parkiran/D").getValue<Boolean>()
+                val slotA = dataSnapshot.child("parkiran/A").getValue<Int>()
+                val slotB = dataSnapshot.child("parkiran/B").getValue<Int>()
+                val slotC = dataSnapshot.child("parkiran/C").getValue<Int>()
+                val slotD = dataSnapshot.child("parkiran/D").getValue<Int>()
 
                 // set slot A
-                if(slotA == true) {
+                if(slotA == 1) {
                     binding.bgA.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.primary_green))
                 } else {
                     binding.bgA.setBackgroundColor(Color.RED)
                 }
                 // set slot B
-                if(slotB == true) {
+                if(slotB == 1) {
                     binding.bgB.setBackgroundColor(getResources().getColor(R.color.primary_green))
                 } else {
                     binding.bgB.setBackgroundColor(Color.RED)
                 }
 
                 // set slot C
-                if(slotC == true) {
+                if(slotC == 1) {
                     binding.bgC.setBackgroundColor(getResources().getColor(R.color.primary_green))
                 } else {
                     binding.bgC.setBackgroundColor(Color.RED)
                 }
 
                 // set slot D
-                if(slotD == true) {
+                if(slotD == 1) {
                     binding.bgD.setBackgroundColor(getResources().getColor(R.color.primary_green))
                 } else {
                     binding.bgD.setBackgroundColor(Color.RED)
