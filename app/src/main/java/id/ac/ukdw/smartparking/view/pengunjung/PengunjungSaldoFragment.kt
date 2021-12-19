@@ -40,34 +40,7 @@ class PengunjungSaldoFragment : BottomSheetDialogFragment(),TopUpInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        inputRupiah()
         btnTopUpSaldo()
-    }
-
-    private fun inputRupiah() {
-        binding.etJumlahTopUp.addTextChangedListener(object : TextWatcher {
-            var setEditText = binding.etJumlahTopUp
-            override fun afterTextChanged(s: Editable?) {
-            }
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-                if (!s.toString().equals(current)) {
-                    setEditText.removeTextChangedListener(this)
-
-                    val cleanString: String = s!!.replace("""[Rp,. ]""".toRegex(), "")
-                    nominal = cleanString
-                    val formatted = NumberFormat.getCurrencyInstance(Locale("id","ID")).format(cleanString.replace("[^\\d]".toRegex(),"").toLong())
-
-                    current = formatted
-                    setEditText.setText(formatted)
-                    setEditText.setSelection(formatted.length)
-                    setEditText.addTextChangedListener(this)
-                }
-            }
-        })
-
     }
 
     private fun bindingView(): View {
@@ -81,6 +54,7 @@ class PengunjungSaldoFragment : BottomSheetDialogFragment(),TopUpInterface {
     }
 
     private fun btnTopUpSaldo(){
+        nominal = binding.etJumlahTopUp.text.toString()
         binding.btnSubmit.setOnClickListener {
             Toast.makeText(requireContext(),"Jumlah Top Up: $nominal",Toast.LENGTH_LONG).show()
             topUp(getIdUser(),nominal)
