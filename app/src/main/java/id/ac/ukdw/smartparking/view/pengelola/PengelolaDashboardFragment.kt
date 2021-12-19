@@ -77,7 +77,7 @@ class PengelolaDashboardFragment : Fragment() {
                 } else {
                     val jumlahPengunjung = dataSnapshot.child("pemasukan/"+bulan+"/"+tanggal+"/pengunjung").getValue<Int>()
                     val jumlahPenghasilan = dataSnapshot.child("pemasukan/"+bulan+"/"+tanggal+"/total").getValue<Double>()
-                    binding.tvJumlahPengunjung.text = jumlahPengunjung.toString()+" Orang"
+                    binding.tvJumlahPengunjung.text = jumlahPengunjung.toString()+" Kendaraan"
                     binding.tvJumlahPenghasilan.text = rupiah(jumlahPenghasilan!!)+",-"
                 }
             }

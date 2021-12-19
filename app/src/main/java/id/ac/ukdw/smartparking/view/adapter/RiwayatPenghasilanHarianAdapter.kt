@@ -23,7 +23,7 @@ class RiwayatPenghasilanHarianAdapter(private val listPenghasilan: ArrayList<Pen
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = listPenghasilan[position]
 
-        holder.durasiRiwayat.text = currentItem.durasi.toString() + " Jam"
+        holder.durasiRiwayat.text = currentItem.pengunjung.toString() + " Kendaraan"
         holder.namaRiwayat.text = currentItem.tanggal.toString()
         holder.hargaRiwayat.text = rupiah(currentItem.total.toString().toDouble())
     }

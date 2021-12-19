@@ -1,6 +1,7 @@
 package id.ac.ukdw.smartparking.api
 
 import id.ac.ukdw.smartparking.model.kartu.GetCardResponse
+import id.ac.ukdw.smartparking.model.kartu.RegisterUserCardResponse
 import id.ac.ukdw.smartparking.model.login.OnLoginSuccessResponse
 import id.ac.ukdw.smartparking.model.parkir.OnGetParkingSessionByUserIdResponse
 import id.ac.ukdw.smartparking.model.pengunjung.CreatePengunjungResponse
@@ -59,5 +60,13 @@ interface Service {
     fun getTopUpHistory(
         @Field("id_user") id_user: String
     ): Call<GetVoucherResponse>
+
+    // register kartu user
+    @FormUrlEncoded
+    @POST("kartuApi.php?function=register_user_card")
+    fun registerUserCard(
+        @Field("card_uid") card_uid: String,
+        @Field("id_user") id_user: String
+    ): Call<RegisterUserCardResponse>
 
 }

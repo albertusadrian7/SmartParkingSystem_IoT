@@ -12,12 +12,15 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import id.ac.ukdw.smartparking.R
 import id.ac.ukdw.smartparking.databinding.FragmentPengelolaKartuBinding
-import java.text.NumberFormat
-import java.util.*
+import id.ac.ukdw.smartparking.presenter.RegisterUserCardPresenter
+import id.ac.ukdw.smartparking.view.viewInterface.RegisterUserCardInterface
 
 
-class PengelolaKartuFragment : BottomSheetDialogFragment() {
+class PengelolaKartuFragment : BottomSheetDialogFragment(), RegisterUserCardInterface {
     private lateinit var binding: FragmentPengelolaKartuBinding
+    private lateinit var cardUid: String
+    private lateinit var idUser: String
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,6 +34,16 @@ class PengelolaKartuFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        registerKartu()
+    }
+
+    private fun registerKartu() {
+        binding.btnSubmit.setOnClickListener {
+            cardUid = binding.etIdKartu.text.toString()
+            idUser = binding.etIdPengguna.text.toString()
+            registerUserCard(cardUid,idUser)
+            dialog!!.dismiss()
+        }
     }
 
     private fun bindingView(): View {
@@ -42,4 +55,22 @@ class PengelolaKartuFragment : BottomSheetDialogFragment() {
         super.onDismiss(dialog)
         findNavController().navigate(R.id.dashboardFragment)
     }
+
+
+    override fun registerUserCard(card_uid: String, id_user: String) {
+        RegisterUserCardPresenter(requireActivity(),this)
+            .registerUserCardPresenter(
+                card_uid,
+                id_user
+            )
+    }
+
+    override fun onRegisterUserCardSuccess(message: String) {
+        Toast.makeText(requireContext(),message,Toast.LENGTH_LONG).show()
+    }
+
+    override fun onRegisterUserCardFail(message: String) {
+        Toast.makeText(requireContext(),message,Toast.LENGTH_LONG).show()
+    }
+
 }
