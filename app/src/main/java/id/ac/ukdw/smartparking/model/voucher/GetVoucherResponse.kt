@@ -32,6 +32,9 @@ data class VoucherItem(
 	@field:SerializedName("id_user")
 	val idUser: String? = null,
 
+	@field:SerializedName("tanggal")
+	val tanggal: String? = null,
+
 	@field:SerializedName("status")
 	val status: String? = null
 ) : Parcelable

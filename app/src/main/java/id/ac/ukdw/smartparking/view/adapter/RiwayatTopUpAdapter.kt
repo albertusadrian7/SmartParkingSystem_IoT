@@ -38,10 +38,17 @@ class RiwayatTopUpAdapter(private val listRiwayatTopUp: ArrayList<VoucherItem>):
         val data = listRiwayatTopUp[position]
         val kodeVoucher = data.kodeVoucher.toString()
         val status = data.status.toString()
+
         val nominal = data.nominal.toString()
+        val dateTime = data.tanggal.toString()
+        val tanggal = dateTime.split(" ")[0]
         holder.nominal.text = rupiah(nominal.toDouble())
-        holder.status.text = status
-        holder.kodeVoucher.text = "Tanggal, kode? klik"
+        if (status == "true"){
+            holder.status.text = "Sudah digunakan"
+        } else {
+            holder.status.text = "Belum digunakan"
+        }
+        holder.tglVoucher.text = tglIndonesia(tanggal)
         holder.cvRiwayat.setOnClickListener {
             val arguments = Bundle()
             arguments.putString("kode", kodeVoucher)
@@ -58,7 +65,7 @@ class RiwayatTopUpAdapter(private val listRiwayatTopUp: ArrayList<VoucherItem>):
 
     class RiwayatTopUpViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         var nominal: TextView = itemView.findViewById(R.id.tvHargaRiwayat)
-        var kodeVoucher: TextView = itemView.findViewById(R.id.tvNamaRiwayat)
+        var tglVoucher: TextView = itemView.findViewById(R.id.tvNamaRiwayat)
         var status: TextView = itemView.findViewById(R.id.tvDurasiRiwayat)
         val cvRiwayat: CardView = itemView.findViewById(R.id.cvRiwayat)
     }
@@ -67,5 +74,26 @@ class RiwayatTopUpAdapter(private val listRiwayatTopUp: ArrayList<VoucherItem>):
         val localeID =  Locale("in", "ID")
         val numberFormat = NumberFormat.getCurrencyInstance(localeID)
         return numberFormat.format(number).toString()
+    }
+
+    fun tglIndonesia (tgl: String): String{
+        val tgl = tgl.split("-")
+        val bulan = when(tgl[1]){
+            "01" -> "Januari"
+            "02" -> "Februari"
+            "03" -> "Maret"
+            "04" -> "April"
+            "05" -> "Mei"
+            "06" -> "Juni"
+            "07" -> "Juli"
+            "08" -> "Agustus"
+            "09" -> "September"
+            "10" -> "Oktober"
+            "11" -> "November"
+            "12" -> "Desember"
+            else -> "Terjadi kesalahan"
+        }
+        var tglIndonesia = "${tgl[2]} $bulan ${tgl[0]}"
+        return tglIndonesia
     }
 }
