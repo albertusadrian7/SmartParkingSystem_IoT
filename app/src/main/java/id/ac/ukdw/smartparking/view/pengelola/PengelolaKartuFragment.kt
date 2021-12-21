@@ -42,7 +42,6 @@ class PengelolaKartuFragment : BottomSheetDialogFragment(), RegisterUserCardInte
             cardUid = binding.etIdKartu.text.toString()
             idUser = binding.etIdPengguna.text.toString()
             registerUserCard(cardUid,idUser)
-            dialog!!.dismiss()
         }
     }
 
@@ -67,10 +66,12 @@ class PengelolaKartuFragment : BottomSheetDialogFragment(), RegisterUserCardInte
 
     override fun onRegisterUserCardSuccess(message: String) {
         Toast.makeText(requireContext(),message,Toast.LENGTH_LONG).show()
+        dialog!!.dismiss()
     }
 
     override fun onRegisterUserCardFail(message: String) {
         Toast.makeText(requireContext(),message,Toast.LENGTH_LONG).show()
+        dialog!!.dismiss()
     }
 
 }

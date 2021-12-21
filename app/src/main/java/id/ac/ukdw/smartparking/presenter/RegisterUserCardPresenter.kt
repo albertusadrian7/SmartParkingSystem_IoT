@@ -32,6 +32,8 @@ class RegisterUserCardPresenter(private val activity: Activity, private val view
                         true -> {
                             if (response.body()?.status == 1){
                                 view.onRegisterUserCardSuccess(response.body()?.message!!)
+                            } else {
+                                view.onRegisterUserCardFail(response.body()?.message!!)
                             }
                         }
                         false -> {
