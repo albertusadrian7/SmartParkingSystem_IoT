@@ -58,7 +58,6 @@ class PengunjungSaldoFragment : BottomSheetDialogFragment(),TopUpInterface {
             nominal = binding.etJumlahTopUp.text.toString()
             Toast.makeText(requireContext(),"Jumlah Top Up: $nominal",Toast.LENGTH_LONG).show()
             topUp(getIdUser(),nominal)
-            dialog!!.dismiss()
         }
     }
 
@@ -72,10 +71,12 @@ class PengunjungSaldoFragment : BottomSheetDialogFragment(),TopUpInterface {
 
     override fun onTopUpSuccess(message: String) {
         Toast.makeText(requireContext(),message,Toast.LENGTH_LONG).show()
+        dialog!!.dismiss()
     }
 
     override fun onTopUpFail(message: String) {
         Toast.makeText(requireContext(),message,Toast.LENGTH_LONG).show()
+        dialog!!.dismiss()
     }
 
     private fun getIdUser(): String {

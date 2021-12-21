@@ -26,11 +26,12 @@ class KartuPresenter(private val activity: Activity, private var view: KartuInte
                 ) {
                     when(response.isSuccessful){
                         true -> {
-                            if (response.body()?.status == 1){
-                                Log.i("Hasil","${response.body()?.data}")
+                            if (response.body()?.status == 1) {
+                                Log.i("Hasil", "${response.body()?.data}")
                                 val result = response.body()?.data as List<GetKartuItem>
                                 view.resultCardSuccess(result, fragment)
-                                Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
+//                                Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
+                            } else {
                                 Toast.makeText(activity,"Pesan: ${response.body()?.message.toString()}", Toast.LENGTH_SHORT).show()
                             }
                         }

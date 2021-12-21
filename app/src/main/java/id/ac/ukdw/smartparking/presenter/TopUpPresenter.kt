@@ -32,11 +32,13 @@ class TopUpPresenter(private val activity: Activity, private val view: TopUpInte
                     when(response.isSuccessful){
                         true -> {
                             if (response.body()?.status == 1){
-                                view.onTopUpSuccess("Berhasil membuat voucher top up!")
+                                view.onTopUpSuccess(response.body()?.message!!)
+                            } else {
+                                view.onTopUpFail(response.body()?.message!!)
                             }
                         }
                         false -> {
-                            view.onTopUpFail("Gagal membuat voucher top up!")
+                            view.onTopUpFail(response.body()?.message!!)
                         }
                     }
                 }

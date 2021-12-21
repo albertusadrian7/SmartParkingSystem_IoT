@@ -24,12 +24,12 @@ class ListRiwayatPresenter(private val activity: Activity, private var view: Riw
                 ) {
                     when(response.isSuccessful){
                         true -> {
-                            if (response.body()?.status == 1){
-                                Log.i("Hasil","${response.body()?.data}")
+                            if (response.body()?.status == 1) {
+                                Log.i("Hasil", "${response.body()?.data}")
                                 val result = response.body()?.data as List<GetParkingSessionItem>
-
                                 view.resultSuccess(result)
-                                Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
+//                                Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
+                            } else {
                                 Toast.makeText(activity,"Pesan: ${response.body()?.message.toString()}", Toast.LENGTH_SHORT).show()
                             }
                         }
