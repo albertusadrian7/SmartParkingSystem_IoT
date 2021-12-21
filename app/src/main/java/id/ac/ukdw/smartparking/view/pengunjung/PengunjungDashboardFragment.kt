@@ -19,6 +19,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import id.ac.ukdw.smartparking.R
@@ -127,6 +128,9 @@ class PengunjungDashboardFragment : Fragment(), KartuInterface {
             tvIdKartu.text = kartu[0].cardUid.toString()
             val tvJumlahSaldo = view.findViewById<TextView>(R.id.tvJumlahSaldo)
             tvJumlahSaldo.text = kartu[0].saldo?.let { rupiah(it.toDouble()) }
+        } else {
+            val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.bottom_nav)
+            bottomNavigationView?.visibility = View.GONE
         }
     }
 
