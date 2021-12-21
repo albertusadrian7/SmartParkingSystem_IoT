@@ -54,13 +54,15 @@ class LoginPresenter(private val activity: Activity, private val view: LoginInte
                                     password,
                                     role
                                 )
-                                view.onLoginSuccess(role)
+                                view.onLoginSuccess(activity.getString(R.string.login_sukses))
+                            } else {
                                 Toast.makeText(activity,"Pesan: ${response.body()?.message.toString()}", Toast.LENGTH_SHORT).show()
+                                view.onLoginFail("Login gagal!")
                             }
                         }
                         false -> {
-                            view.onLoginFail(activity.getString(R.string.login_gagal))
                             Toast.makeText(activity,"Pesan: ${response.body()?.message.toString()}", Toast.LENGTH_SHORT).show()
+                            view.onLoginFail(activity.getString(R.string.login_gagal))
                         }
                     }
                 }

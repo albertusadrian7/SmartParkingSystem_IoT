@@ -65,12 +65,14 @@ class RegisterPresenter(private val activity: Activity, private val view: Regist
                                     role
                                 )
                                 view.onRegisterSuccess(activity.getString(R.string.registrasi_sukses))
+                            } else {
                                 Toast.makeText(activity,"Pesan: ${response.body()?.message.toString()}", Toast.LENGTH_SHORT).show()
+                                view.onRegisterFail(activity.getString(R.string.registrasi_gagal))
                             }
                         }
                         false -> {
-                            view.onRegisterFail(activity.getString(R.string.registrasi_gagal))
                             Toast.makeText(activity,"Pesan: ${response.body()?.message.toString()}", Toast.LENGTH_SHORT).show()
+                            view.onRegisterFail(activity.getString(R.string.registrasi_gagal))
                         }
                     }
                 }

@@ -244,12 +244,9 @@ class RegisterFragment : Fragment(), RegisterInterface {
     }
 
     override fun onRegisterSuccess(message: String) {
-        binding.etUsername.text = null
-        binding.etEmail.text = null
-        binding.etPassword.text = null
-        binding.etKonfirmasiPassword.text = null
-        binding.etNamaLengkap.text = null
         Toast.makeText(context,message,Toast.LENGTH_LONG).show()
+        navigateToDashboard()
+
     }
 
     override fun onRegisterFail(message: String) {
