@@ -39,7 +39,7 @@ class RiwayatAdapter(private val listRiwayat: ArrayList<GetParkingSessionItem>):
         var tanggal = splitDateTimeOut[0]
         val start = Time(splitWaktuMasuk[0].toInt(), splitWaktuMasuk[1].toInt(), splitWaktuMasuk[2].toInt())
         val stop = Time(splitWaktuKeluar[0].toInt(), splitWaktuKeluar[1].toInt(), splitWaktuKeluar[2].toInt())
-        var diff: String = difference(start, stop)
+        var diff: String = difference(stop, start)
 
         holder.total.text = rupiah(data.total.toString().toDouble())
         holder.tanggal.text = tglIndonesia(tanggal)
