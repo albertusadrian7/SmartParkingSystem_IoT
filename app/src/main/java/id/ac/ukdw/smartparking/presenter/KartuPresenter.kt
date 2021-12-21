@@ -31,8 +31,6 @@ class KartuPresenter(private val activity: Activity, private var view: KartuInte
                                 val result = response.body()?.data as List<GetKartuItem>
                                 view.resultCardSuccess(result, fragment)
 //                                Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
-                            } else {
-                                Toast.makeText(activity,"Pesan: ${response.body()?.message.toString()}", Toast.LENGTH_SHORT).show()
                             }
                         }
                         false -> {

@@ -27,9 +27,6 @@ class ListRiwayatTopUpPresenter(private val activity: Activity, private var view
                                 Log.i("Hasil", "${response.body()?.data}")
                                 val result = response.body()?.data as List<VoucherItem>
                                 view.resultSuccess(result)
-//                                Toast.makeText(activity,"Pesan: ${response.message()}", Toast.LENGTH_SHORT).show()
-                            } else {
-                                Toast.makeText(activity,"Pesan: ${response.body()?.message.toString()}", Toast.LENGTH_SHORT).show()
                             }
                         }
                         false -> {
